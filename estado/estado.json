@@ -2,42 +2,42 @@
  "schema": "atlas-estado/1",
  "rule": "atlas-slow-ensemble-v1",
  "symbol": "BTCUSDT",
- "day": "2026-11-20",
- "close": 58951.51,
+ "day": "2026-11-21",
+ "close": 60215.77,
  "votes": 0,
  "rules": 38,
  "exposure": 0.0,
- "vol30": 0.4505,
- "entry_level": 75546.3,
- "exit_level": 72811.88,
- "entry_distance_pct": 28.15,
- "exit_distance_pct": 23.51,
+ "vol30": 0.4585,
+ "entry_level": 75511.35,
+ "exit_level": 72723.64,
+ "entry_distance_pct": 25.4,
+ "exit_distance_pct": 20.77,
  "next_votes": {
   "up": [
    {
     "family": "momentum",
-    "n": 168,
-    "price": 60884.62
-   },
-   {
-    "family": "momentum",
-    "n": 112,
-    "price": 62823.64
-   },
-   {
-    "family": "momentum",
     "n": 98,
-    "price": 63086.01
-   },
-   {
-    "family": "momentum",
-    "n": 140,
-    "price": 63144.01
+    "price": 62900.0
    },
    {
     "family": "momentum",
     "n": 154,
-    "price": 64298.01
+    "price": 63311.99
+   },
+   {
+    "family": "momentum",
+    "n": 168,
+    "price": 63332.01
+   },
+   {
+    "family": "momentum",
+    "n": 112,
+    "price": 63570.0
+   },
+   {
+    "family": "momentum",
+    "n": 140,
+    "price": 63650.0
    }
   ],
   "down": []
@@ -56,11 +56,11 @@
    "total": 9
   }
  },
- "summary_es": "La regla está fuera con 0/38 votos. Volvería a entrar con un cierre diario por encima de 75.546 $ (+28.1 %), con una exposición de 50 %.",
+ "summary_es": "La regla está fuera con 0/38 votos. Volvería a entrar con un cierre diario por encima de 75.511 $ (+25.4 %), con una exposición de 50 %.",
  "portfolio": {
   "equity_at_close": 950.09,
   "return_pct": -4.99,
-  "hold_return_pct": -20.99,
+  "hold_return_pct": -19.3,
   "start": "2026-11-12",
   "basis": "close"
  },
@@ -68,14 +68,14 @@
   "fee_per_side": 0.002,
   "equity_at_close": 1000.0,
   "return_pct": 0.0,
-  "hold_return_pct": -9.32,
+  "hold_return_pct": -7.38,
   "start": "2026-11-17",
   "basis": "close"
  },
  "mia": {
   "verdict": "OK",
-  "day": "2026-11-20"
+  "day": "2026-11-21"
  },
- "published_utc": "2026-11-21T00:26:06Z",
+ "published_utc": "2026-11-22T00:29:48Z",
  "simulation_only": true
 }
