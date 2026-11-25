@@ -2,42 +2,42 @@
  "schema": "atlas-estado/1",
  "rule": "atlas-slow-ensemble-v1",
  "symbol": "BTCUSDT",
- "day": "2026-11-23",
- "close": 61270.93,
+ "day": "2026-11-24",
+ "close": 59832.0,
  "votes": 0,
  "rules": 38,
  "exposure": 0.0,
- "vol30": 0.4686,
- "entry_level": 75455.77,
- "exit_level": 72775.88,
- "entry_distance_pct": 23.15,
- "exit_distance_pct": 18.78,
+ "vol30": 0.4713,
+ "entry_level": 74809.99,
+ "exit_level": 72619.28,
+ "entry_distance_pct": 25.03,
+ "exit_distance_pct": 21.37,
  "next_votes": {
   "up": [
    {
     "family": "momentum",
-    "n": 168,
-    "price": 61730.0
+    "n": 154,
+    "price": 61077.99
    },
    {
     "family": "momentum",
-    "n": 154,
-    "price": 62734.57
+    "n": 168,
+    "price": 61510.99
    },
    {
     "family": "momentum",
     "n": 140,
-    "price": 63363.99
+    "price": 62290.0
    },
    {
     "family": "momentum",
     "n": 112,
-    "price": 64106.56
+    "price": 64665.23
    },
    {
     "family": "momentum",
-    "n": 98,
-    "price": 64725.42
+    "n": 126,
+    "price": 66114.49
    }
   ],
   "down": []
@@ -56,11 +56,11 @@
    "total": 9
   }
  },
- "summary_es": "La regla está fuera con 0/38 votos. Volvería a entrar con un cierre diario por encima de 75.456 $ (+23.2 %), con una exposición de 50 %.",
+ "summary_es": "La regla está fuera con 0/38 votos. Volvería a entrar con un cierre diario por encima de 74.810 $ (+25.0 %), con una exposición de 50 %.",
  "portfolio": {
   "equity_at_close": 950.09,
   "return_pct": -4.99,
-  "hold_return_pct": -17.88,
+  "hold_return_pct": -19.81,
   "start": "2026-11-12",
   "basis": "close"
  },
@@ -68,14 +68,14 @@
   "fee_per_side": 0.002,
   "equity_at_close": 1000.0,
   "return_pct": 0.0,
-  "hold_return_pct": -5.76,
+  "hold_return_pct": -7.97,
   "start": "2026-11-17",
   "basis": "close"
  },
  "mia": {
   "verdict": "OK",
-  "day": "2026-11-23"
+  "day": "2026-11-24"
  },
- "published_utc": "2026-11-24T00:32:19Z",
+ "published_utc": "2026-11-25T00:25:52Z",
  "simulation_only": true
 }
