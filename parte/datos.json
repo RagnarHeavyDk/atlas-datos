@@ -1,0 +1,156 @@
+{
+ "schema": "atlas-parte-datos/1",
+ "generated_utc": "2026-11-15T14:51:00+00:00",
+ "sources_ok": "11/13",
+ "errors": {
+  "fed_balance": "HTTPError 503",
+  "polymarket": "HTTPError 406"
+ },
+ "facts": [
+  {
+   "id": "tga",
+   "value": 933.1,
+   "unit": "bn",
+   "asof": "2026-11-12",
+   "change_5d": -3.1,
+   "z_change_5d": -0.08,
+   "percentile_120d": 57.5
+  },
+  {
+   "id": "rrp",
+   "value": 0.3,
+   "unit": "bn",
+   "asof": "2026-11-13",
+   "change_5d": 0.2
+  },
+  {
+   "id": "cftc_lev",
+   "value": -2591,
+   "unit": "contracts",
+   "asof": "2026-11-03",
+   "change_1w": 1388,
+   "percentile_26w": 100.0
+  },
+  {
+   "id": "cftc_am",
+   "value": 2403,
+   "unit": "contracts",
+   "asof": "2026-11-03",
+   "change_1w": -351,
+   "percentile_26w": 19.2
+  },
+  {
+   "id": "funding",
+   "value": -0.0,
+   "unit": "% / 8h",
+   "asof": "2026-11-15 08:00",
+   "annualized_pct": -0.1,
+   "percentile_33d": 7.0,
+   "z": -1.84
+  },
+  {
+   "id": "open_interest",
+   "value": 3.24,
+   "unit": "bn",
+   "asof": "2026-11-14",
+   "change_1d_pct": -6.21,
+   "z_change_1d": -2.0,
+   "percentile_hist": 69.4
+  },
+  {
+   "id": "dvol",
+   "value": 44.1,
+   "unit": "%",
+   "asof": "2026-11-15",
+   "change_1d": -3.2,
+   "percentile_1y": 65.5,
+   "move_1d_pct": 2.31
+  },
+  {
+   "id": "coinbase_premium",
+   "value": -0.101,
+   "unit": "%",
+   "asof": "2026-11-15 14:51",
+   "coinbase": 64790.51,
+   "binance": 64856.15
+  },
+  {
+   "id": "stablecoins",
+   "value": 287.1,
+   "unit": "bn",
+   "asof": "2026-11-15",
+   "change_7d": -4.42,
+   "change_30d": -15.99,
+   "z_change_7d": -2.18
+  },
+  {
+   "id": "btc_fees",
+   "value": 1,
+   "unit": "sat/vB",
+   "asof": "2026-11-15 14:51",
+   "hour_fee": 1
+  },
+  {
+   "id": "btc_price",
+   "value": 64150.0,
+   "unit": "USD",
+   "asof": "2026-11-14",
+   "change_1d_pct": -6.1,
+   "change_7d_pct": -15.44
+  },
+  {
+   "id": "atlas_rule",
+   "value": "2/38",
+   "unit": "rules",
+   "asof": "2026-11-14",
+   "in_market": false,
+   "votes_last5": [
+    20,
+    21,
+    8,
+    7,
+    2
+   ],
+   "entry_level": 74747.5,
+   "entry_distance_pct": 16.52,
+   "exit_level": 73023.2,
+   "exit_distance_pct": 13.83,
+   "families": {
+    "media": {
+     "long": 0,
+     "total": 16
+    },
+    "momentum": {
+     "long": 2,
+     "total": 13
+    },
+    "canal": {
+     "long": 0,
+     "total": 9
+    }
+   }
+  }
+ ],
+ "unusual": [
+  {
+   "id": "cftc_lev",
+   "metric": "percentile_26w",
+   "percentile": 100.0
+  },
+  {
+   "id": "stablecoins",
+   "metric": "z_change_7d",
+   "z": -2.18
+  },
+  {
+   "id": "funding",
+   "metric": "percentile_33d",
+   "percentile": 7.0
+  },
+  {
+   "id": "open_interest",
+   "metric": "z_change_1d",
+   "z": -2.0
+  }
+ ]
+}

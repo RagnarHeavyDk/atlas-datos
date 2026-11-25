@@ -1,0 +1,41 @@
+html body {background:#0c0a0e!important}
+#atlas-agent-office {background:#110e13!important;color:#f3efec}
+#atlas-agent-office .ao-stage {background-color:#130e15!important}
+#atlas-agent-office .ao-wall {fill:#30232e;stroke:#624550}
+#atlas-agent-office .ao-room-sign .ao-sign-card {fill:#190d16!important;stroke:#ff5965!important}
+#atlas-agent-office .ao-wall-display .ao-display-screen {fill:#131016;stroke:#ce5362}
+#atlas-agent-office .ao-wall-display .ao-wall-trace {stroke:#a3e1dd}
+#atlas-agent-office .ao-controls button {background:#1b111a;border-color:#60404d;color:#f3efec}
+.signal-room-data {margin:12px;padding:12px;border:1px solid #60404d;background:#170e16;color:#f3efec}
+.signal-room-data summary {cursor:pointer;color:#ffc0c5}
+.signal-room-data dl {display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px}
+.signal-room-data dt {color:#a3e1dd;font-weight:700}
+.signal-room-data dd {margin:3px 0 0;color:#ddd2d9;font-size:12px}
+.atlas-live-layer ellipse {opacity:.42}
+.atlas-live-layer .alv-hit {pointer-events:all;cursor:pointer}
+.alv-room:hover ellipse:not(.alv-hit),.alv-room:focus-visible ellipse:not(.alv-hit) {opacity:1;stroke-width:4}
+#atlas-agent-office .ao-stage {
+  background:radial-gradient(ellipse at 54% 38%,#38121d66,transparent 66%),
+    repeating-linear-gradient(90deg,transparent 0 39px,#a3445122 39px 40px),
+    repeating-linear-gradient(0deg,#0d0b11 0 39px,#a3445122 39px 40px)!important;
+}
+#atlas-agent-office .ao-head {background:linear-gradient(115deg,#211019,#0c0d12 65%);border-bottom:1px solid #873944}
+#atlas-agent-office .ao-head h2 {font-family:"Arial Narrow",Impact,sans-serif;letter-spacing:.06em;color:#fff4f1}
+#atlas-agent-office .ao-kicker {color:#ff8992}
+#atlas-agent-office .ao-wall > polygon:first-child {fill:#241e27;stroke:#66515d}
+#atlas-agent-office .ao-room-light polygon {fill:#ff5867;filter:drop-shadow(0 0 5px #ff435f)}
+#atlas-agent-office .ao-room > polygon:first-child {fill:#24212a;stroke:#5b404d}
+#atlas-agent-office .ao-live-screen > rect:first-child {fill:#381521;stroke:#ff6472}
+#atlas-agent-office .ao-live-screen > rect:nth-child(2) {fill:#10171d}
+#atlas-agent-office .ao-wall-trace {stroke:#a3e1dd}
+.signal-room-card {
+  box-sizing:border-box;width:min(440px,calc(100% - 32px));padding:24px;
+  background:linear-gradient(135deg,#27121d,#100e15 72%);color:#f3efec;
+  border:1px solid #fb5865;border-left-width:4px;box-shadow:0 8px 50px #000a;
+  font:14px/1.5 Consolas,monospace;
+}
+.signal-room-card::backdrop {background:#09070a50}
+.signal-room-card small {color:#a3e1dd}
+.signal-room-card h2 {font-size:22px;margin:8px 0 16px}
+.signal-room-card p {border-top:1px solid #49303e;padding-top:10px}
+.signal-room-card button {padding:8px 16px;background:#24141e;border:1px solid #f57680;color:#fff;cursor:pointer}

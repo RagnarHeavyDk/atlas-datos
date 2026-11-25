@@ -1,0 +1,132 @@
+//@version=6
+// ATLAS Slow Ensemble V1 — reglas congeladas el 11-nov-2026 (Claude). SOLO SIMULACION.
+// Conjunto de 38 reglas lentas (16 medias, 13 momentum, 9 Donchian) con mayoria 60/40
+// y exposicion ajustada por volatilidad (objetivo 50 %, ventana 30 dias, pasos de 0,25).
+// Senal al cierre, ejecucion en la apertura siguiente. Larga o efectivo, sin apalancamiento.
+// Usar en grafico DIARIO. No tiene alertas ni conexion con broker.
+strategy("ATLAS Slow Ensemble V1 · SIM", overlay=true, initial_capital=1000, currency=currency.USD,
+     commission_type=strategy.commission.percent, commission_value=0.8, slippage=0,
+     process_orders_on_close=false, calc_on_every_tick=false, margin_long=100, margin_short=100,
+     pyramiding=20, default_qty_type=strategy.fixed)
+
+startT = input.time(timestamp("2018-01-01T00:00:00Z"), "Inicio de la prueba (UTC)")
+endT   = input.time(timestamp("2026-10-01T00:00:00Z"), "Fin de la prueba (UTC)")
+tv     = input.float(0.50, "Volatilidad objetivo anual", step=0.05)
+vwin   = input.int(30, "Ventana de volatilidad (dias)")
+feeBuf = 0.97 // margen para que la compra al 100 % no supere el efectivo tras comision y hueco
+
+f(c) => c ? 1.0 : 0.0
+don(n) =>
+    var float s = 0.0
+    hi = ta.highest(high, n)[1]
+    lo = ta.lowest(low, n / 2)[1]
+    if close > hi
+        s := 1.0
+    else if close < lo
+        s := 0.0
+    s
+
+float votes = 0.0
+votes += f(close > ta.sma(close, 100))
+votes += f(close > ta.sma(close, 110))
+votes += f(close > ta.sma(close, 120))
+votes += f(close > ta.sma(close, 130))
+votes += f(close > ta.sma(close, 140))
+votes += f(close > ta.sma(close, 150))
+votes += f(close > ta.sma(close, 160))
+votes += f(close > ta.sma(close, 170))
+votes += f(close > ta.sma(close, 180))
+votes += f(close > ta.sma(close, 190))
+votes += f(close > ta.sma(close, 200))
+votes += f(close > ta.sma(close, 210))
+votes += f(close > ta.sma(close, 220))
+votes += f(close > ta.sma(close, 230))
+votes += f(close > ta.sma(close, 240))
+votes += f(close > ta.sma(close, 250))
+votes += f(close > close[84])
+votes += f(close > close[98])
+votes += f(close > close[112])
+votes += f(close > close[126])
+votes += f(close > close[140])
+votes += f(close > close[154])
+votes += f(close > close[168])
+votes += f(close > close[182])
+votes += f(close > close[196])
+votes += f(close > close[210])
+votes += f(close > close[224])
+votes += f(close > close[238])
+votes += f(close > close[252])
+d40 = don(40)
+votes += d40
+d50 = don(50)
+votes += d50
+d60 = don(60)
+votes += d60
+d70 = don(70)
+votes += d70
+d80 = don(80)
+votes += d80
+d90 = don(90)
+votes += d90
+d100 = don(100)
+votes += d100
+d110 = don(110)
+votes += d110
+d120 = don(120)
+votes += d120
+share = votes / 38.0
+
+var float ens = 0.0
+if share >= 0.6
+    ens := 1.0
+else if share <= 0.4
+    ens := 0.0
+
+vol = ta.stdev(math.log(close / close[1]), vwin, false) * math.sqrt(365)
+raw = na(vol) or vol == 0 ? 0.0 : ens * math.min(1.0, tv / vol)
+w   = math.max(0.0, math.min(1.0, math.floor(raw / 0.25 + 0.5) * 0.25))
+
+inWin = time >= startT - 86400000 and time < endT - 86400000   // la senal de hoy se ejecuta manana
+firstBar = inWin and not inWin[1]
+if inWin and (w != w[1] or firstBar)
+    if w == 0
+        strategy.close_all(comment="efectivo")
+    else
+        target = w * strategy.equity * feeBuf / close
+        delta  = target - strategy.position_size
+        if delta > 0
+            strategy.order("compra", strategy.long, delta, comment=str.tostring(w * 100, "#") + "%")
+        else if delta < 0
+            strategy.order("reduce", strategy.short, -delta, comment=str.tostring(w * 100, "#") + "%")
+if time >= endT - 86400000 and strategy.position_size > 0
+    strategy.close_all(comment="fin")
+
+plot(ta.sma(close, 200), "SMA200 (referencia)", color=color.new(color.gray, 40))
+bgcolor(w >= 0.75 ? color.new(color.green, 88) : w > 0 ? color.new(color.yellow, 88) : na, title="Exposicion")
+
+// Referencia: mantener desde el inicio, con una comision de compra
+var float bhStart = na
+var float bhPeak = 1000.0
+var float bhDD = 0.0
+var float bhRet = na
+if time >= startT and time < endT
+    if na(bhStart)
+        bhStart := open
+    bhEq = 1000 * (1 - 0.008) * close / bhStart
+    bhPeak := math.max(bhPeak, bhEq)
+    bhDD := math.min(bhDD, bhEq / bhPeak - 1)
+    bhRet := bhEq / 1000 - 1
+var table t = table.new(position.top_right, 2, 6, bgcolor=color.new(color.black, 20), border_width=1)
+if barstate.islast
+    table.cell(t, 0, 0, "ATLAS SIM", text_color=color.white)
+    table.cell(t, 1, 0, syminfo.ticker, text_color=color.white)
+    table.cell(t, 0, 1, "Estrategia neto %", text_color=color.white)
+    table.cell(t, 1, 1, str.tostring(strategy.netprofit / strategy.initial_capital * 100, "#.0"), text_color=color.white)
+    table.cell(t, 0, 2, "Estrategia caida max %", text_color=color.white)
+    table.cell(t, 1, 2, str.tostring(-strategy.max_drawdown_percent, "#.0"), text_color=color.white)
+    table.cell(t, 0, 3, "Mantener neto %", text_color=color.white)
+    table.cell(t, 1, 3, str.tostring(bhRet * 100, "#.0"), text_color=color.white)
+    table.cell(t, 0, 4, "Mantener caida max %", text_color=color.white)
+    table.cell(t, 1, 4, str.tostring(bhDD * 100, "#.0"), text_color=color.white)
+    table.cell(t, 0, 5, "Operaciones cerradas", text_color=color.white)
+    table.cell(t, 1, 5, str.tostring(strategy.closedtrades), text_color=color.white)

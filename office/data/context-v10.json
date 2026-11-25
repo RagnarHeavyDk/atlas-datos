@@ -1,0 +1,823 @@
+{
+  "schema": 1,
+  "checked_at": "2026-11-14T13:33:09.752Z",
+  "macro": {
+    "version": "atlas-macro-pulse-v0.2",
+    "reference_month": "2026-09",
+    "value": 49.137931034482754,
+    "components": [
+      {
+        "key": "disinflation",
+        "raw": -0.00005578765207570058,
+        "percentile": 32.758620689655174,
+        "weight": 0.25,
+        "contribution": 8.189655172413794
+      },
+      {
+        "key": "labour",
+        "raw": 0,
+        "percentile": 45.689655172413794,
+        "weight": 0.25,
+        "contribution": 11.422413793103448
+      },
+      {
+        "key": "money",
+        "raw": 5.709912773373316,
+        "percentile": 84.48275862068965,
+        "weight": 0.25,
+        "contribution": 21.120689655172413
+      },
+      {
+        "key": "rates",
+        "raw": -0.1200000000000001,
+        "percentile": 33.62068965517241,
+        "weight": 0.25,
+        "contribution": 8.405172413793103
+      }
+    ],
+    "history_valid": 58,
+    "history_total": 60,
+    "excluded_months": [
+      "2025-10",
+      "2026-01"
+    ],
+    "historical_basis": "latest_vintage_not_point_in_time",
+    "predictive_validation": false,
+    "status": "experimental_current_vintage_snapshot",
+    "source_validation": "official_series_adapters_validated",
+    "availability_basis": "all_rows_observed_at_retrieval_not_original_release_dates",
+    "rows": [
+      {
+        "month": "2019-01",
+        "core_cpi": 260.766,
+        "unemployment_pct": 4,
+        "m2_billions": 14460.2,
+        "effective_rate_pct": 2.4,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2019-02",
+        "core_cpi": 261.186,
+        "unemployment_pct": 3.8,
+        "m2_billions": 14506.6,
+        "effective_rate_pct": 2.4,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2019-03",
+        "core_cpi": 261.567,
+        "unemployment_pct": 3.8,
+        "m2_billions": 14559.5,
+        "effective_rate_pct": 2.41,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2019-04",
+        "core_cpi": 261.997,
+        "unemployment_pct": 3.7,
+        "m2_billions": 14594,
+        "effective_rate_pct": 2.42,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2019-05",
+        "core_cpi": 262.217,
+        "unemployment_pct": 3.6,
+        "m2_billions": 14703.2,
+        "effective_rate_pct": 2.39,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2019-06",
+        "core_cpi": 262.739,
+        "unemployment_pct": 3.6,
+        "m2_billions": 14798.8,
+        "effective_rate_pct": 2.38,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2019-07",
+        "core_cpi": 263.28,
+        "unemployment_pct": 3.7,
+        "m2_billions": 14882.7,
+        "effective_rate_pct": 2.4,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2019-08",
+        "core_cpi": 263.877,
+        "unemployment_pct": 3.6,
+        "m2_billions": 14974.4,
+        "effective_rate_pct": 2.13,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2019-09",
+        "core_cpi": 264.388,
+        "unemployment_pct": 3.5,
+        "m2_billions": 15047.2,
+        "effective_rate_pct": 2.04,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2019-10",
+        "core_cpi": 264.97,
+        "unemployment_pct": 3.6,
+        "m2_billions": 15185.6,
+        "effective_rate_pct": 1.83,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2019-11",
+        "core_cpi": 265.548,
+        "unemployment_pct": 3.6,
+        "m2_billions": 15301.3,
+        "effective_rate_pct": 1.55,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2019-12",
+        "core_cpi": 266.02,
+        "unemployment_pct": 3.6,
+        "m2_billions": 15351.5,
+        "effective_rate_pct": 1.55,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2020-01",
+        "core_cpi": 266.716,
+        "unemployment_pct": 3.6,
+        "m2_billions": 15425,
+        "effective_rate_pct": 1.55,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2020-02",
+        "core_cpi": 267.37,
+        "unemployment_pct": 3.5,
+        "m2_billions": 15492.8,
+        "effective_rate_pct": 1.58,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2020-03",
+        "core_cpi": 267.054,
+        "unemployment_pct": 4.4,
+        "m2_billions": 16034.4,
+        "effective_rate_pct": 0.65,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2020-04",
+        "core_cpi": 265.746,
+        "unemployment_pct": 14.8,
+        "m2_billions": 17064,
+        "effective_rate_pct": 0.05,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2020-05",
+        "core_cpi": 265.412,
+        "unemployment_pct": 13.2,
+        "m2_billions": 17931.9,
+        "effective_rate_pct": 0.05,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2020-06",
+        "core_cpi": 265.849,
+        "unemployment_pct": 11,
+        "m2_billions": 18180,
+        "effective_rate_pct": 0.08,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2020-07",
+        "core_cpi": 267.389,
+        "unemployment_pct": 10.2,
+        "m2_billions": 18331.4,
+        "effective_rate_pct": 0.09,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2020-08",
+        "core_cpi": 268.422,
+        "unemployment_pct": 8.4,
+        "m2_billions": 18413.3,
+        "effective_rate_pct": 0.1,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2020-09",
+        "core_cpi": 268.933,
+        "unemployment_pct": 7.8,
+        "m2_billions": 18605,
+        "effective_rate_pct": 0.09,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2020-10",
+        "core_cpi": 269.306,
+        "unemployment_pct": 6.9,
+        "m2_billions": 18759.9,
+        "effective_rate_pct": 0.09,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2020-11",
+        "core_cpi": 269.981,
+        "unemployment_pct": 6.7,
+        "m2_billions": 19002.4,
+        "effective_rate_pct": 0.09,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2020-12",
+        "core_cpi": 270.341,
+        "unemployment_pct": 6.7,
+        "m2_billions": 19119.4,
+        "effective_rate_pct": 0.09,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2021-01",
+        "core_cpi": 270.387,
+        "unemployment_pct": 6.4,
+        "m2_billions": 19375.3,
+        "effective_rate_pct": 0.09,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2021-02",
+        "core_cpi": 270.793,
+        "unemployment_pct": 6.2,
+        "m2_billions": 19641.4,
+        "effective_rate_pct": 0.08,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2021-03",
+        "core_cpi": 271.459,
+        "unemployment_pct": 6.1,
+        "m2_billions": 19874.5,
+        "effective_rate_pct": 0.07,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2021-04",
+        "core_cpi": 273.66,
+        "unemployment_pct": 6.1,
+        "m2_billions": 20174.2,
+        "effective_rate_pct": 0.07,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2021-05",
+        "core_cpi": 275.465,
+        "unemployment_pct": 5.8,
+        "m2_billions": 20457.7,
+        "effective_rate_pct": 0.06,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2021-06",
+        "core_cpi": 277.651,
+        "unemployment_pct": 5.9,
+        "m2_billions": 20472,
+        "effective_rate_pct": 0.08,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2021-07",
+        "core_cpi": 278.648,
+        "unemployment_pct": 5.4,
+        "m2_billions": 20636.8,
+        "effective_rate_pct": 0.1,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2021-08",
+        "core_cpi": 278.997,
+        "unemployment_pct": 5.1,
+        "m2_billions": 20893.4,
+        "effective_rate_pct": 0.09,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2021-09",
+        "core_cpi": 279.698,
+        "unemployment_pct": 4.7,
+        "m2_billions": 21062,
+        "effective_rate_pct": 0.08,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2021-10",
+        "core_cpi": 281.668,
+        "unemployment_pct": 4.5,
+        "m2_billions": 21149.8,
+        "effective_rate_pct": 0.08,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2021-11",
+        "core_cpi": 283.406,
+        "unemployment_pct": 4.1,
+        "m2_billions": 21328.2,
+        "effective_rate_pct": 0.08,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2021-12",
+        "core_cpi": 285.18,
+        "unemployment_pct": 3.9,
+        "m2_billions": 21488.2,
+        "effective_rate_pct": 0.08,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2022-01",
+        "core_cpi": 286.757,
+        "unemployment_pct": 4,
+        "m2_billions": 21623.5,
+        "effective_rate_pct": 0.08,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2022-02",
+        "core_cpi": 288.273,
+        "unemployment_pct": 3.9,
+        "m2_billions": 21706,
+        "effective_rate_pct": 0.08,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2022-03",
+        "core_cpi": 289.056,
+        "unemployment_pct": 3.7,
+        "m2_billions": 21770.7,
+        "effective_rate_pct": 0.2,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2022-04",
+        "core_cpi": 290.514,
+        "unemployment_pct": 3.7,
+        "m2_billions": 21750.8,
+        "effective_rate_pct": 0.33,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2022-05",
+        "core_cpi": 292.063,
+        "unemployment_pct": 3.6,
+        "m2_billions": 21700.2,
+        "effective_rate_pct": 0.77,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2022-06",
+        "core_cpi": 294.05,
+        "unemployment_pct": 3.6,
+        "m2_billions": 21630.9,
+        "effective_rate_pct": 1.21,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2022-07",
+        "core_cpi": 295.088,
+        "unemployment_pct": 3.5,
+        "m2_billions": 21631.8,
+        "effective_rate_pct": 1.68,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2022-08",
+        "core_cpi": 296.535,
+        "unemployment_pct": 3.6,
+        "m2_billions": 21621.9,
+        "effective_rate_pct": 2.33,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2022-09",
+        "core_cpi": 298.226,
+        "unemployment_pct": 3.5,
+        "m2_billions": 21520.8,
+        "effective_rate_pct": 2.56,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2022-10",
+        "core_cpi": 299.399,
+        "unemployment_pct": 3.6,
+        "m2_billions": 21443.7,
+        "effective_rate_pct": 3.08,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2022-11",
+        "core_cpi": 300.325,
+        "unemployment_pct": 3.6,
+        "m2_billions": 21388.5,
+        "effective_rate_pct": 3.78,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2022-12",
+        "core_cpi": 301.394,
+        "unemployment_pct": 3.5,
+        "m2_billions": 21272.8,
+        "effective_rate_pct": 4.1,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2023-01",
+        "core_cpi": 302.642,
+        "unemployment_pct": 3.5,
+        "m2_billions": 21261.6,
+        "effective_rate_pct": 4.33,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2023-02",
+        "core_cpi": 304.123,
+        "unemployment_pct": 3.6,
+        "m2_billions": 21241.6,
+        "effective_rate_pct": 4.57,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2023-03",
+        "core_cpi": 305.147,
+        "unemployment_pct": 3.5,
+        "m2_billions": 20932.6,
+        "effective_rate_pct": 4.65,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2023-04",
+        "core_cpi": 306.534,
+        "unemployment_pct": 3.4,
+        "m2_billions": 20737.8,
+        "effective_rate_pct": 4.83,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2023-05",
+        "core_cpi": 307.652,
+        "unemployment_pct": 3.6,
+        "m2_billions": 20808,
+        "effective_rate_pct": 5.06,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2023-06",
+        "core_cpi": 308.322,
+        "unemployment_pct": 3.6,
+        "m2_billions": 20777.3,
+        "effective_rate_pct": 5.08,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2023-07",
+        "core_cpi": 308.96,
+        "unemployment_pct": 3.5,
+        "m2_billions": 20770.3,
+        "effective_rate_pct": 5.12,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2023-08",
+        "core_cpi": 309.58,
+        "unemployment_pct": 3.7,
+        "m2_billions": 20759.2,
+        "effective_rate_pct": 5.33,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2023-09",
+        "core_cpi": 310.539,
+        "unemployment_pct": 3.7,
+        "m2_billions": 20729.8,
+        "effective_rate_pct": 5.33,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2023-10",
+        "core_cpi": 311.457,
+        "unemployment_pct": 3.9,
+        "m2_billions": 20712.3,
+        "effective_rate_pct": 5.33,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2023-11",
+        "core_cpi": 312.392,
+        "unemployment_pct": 3.7,
+        "m2_billions": 20724,
+        "effective_rate_pct": 5.33,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2023-12",
+        "core_cpi": 313.195,
+        "unemployment_pct": 3.8,
+        "m2_billions": 20753.6,
+        "effective_rate_pct": 5.33,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2024-01",
+        "core_cpi": 314.319,
+        "unemployment_pct": 3.7,
+        "m2_billions": 20808.5,
+        "effective_rate_pct": 5.33,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2024-02",
+        "core_cpi": 315.564,
+        "unemployment_pct": 3.9,
+        "m2_billions": 20896,
+        "effective_rate_pct": 5.33,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2024-03",
+        "core_cpi": 316.792,
+        "unemployment_pct": 3.9,
+        "m2_billions": 20940.9,
+        "effective_rate_pct": 5.33,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2024-04",
+        "core_cpi": 317.649,
+        "unemployment_pct": 3.9,
+        "m2_billions": 20929.9,
+        "effective_rate_pct": 5.33,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2024-05",
+        "core_cpi": 318.095,
+        "unemployment_pct": 3.9,
+        "m2_billions": 20995.3,
+        "effective_rate_pct": 5.33,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2024-06",
+        "core_cpi": 318.39,
+        "unemployment_pct": 4.1,
+        "m2_billions": 21045,
+        "effective_rate_pct": 5.33,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2024-07",
+        "core_cpi": 318.94,
+        "unemployment_pct": 4.2,
+        "m2_billions": 21072.7,
+        "effective_rate_pct": 5.33,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2024-08",
+        "core_cpi": 319.75,
+        "unemployment_pct": 4.2,
+        "m2_billions": 21165.8,
+        "effective_rate_pct": 5.33,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2024-09",
+        "core_cpi": 320.732,
+        "unemployment_pct": 4.1,
+        "m2_billions": 21249.9,
+        "effective_rate_pct": 5.13,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2024-10",
+        "core_cpi": 321.731,
+        "unemployment_pct": 4.1,
+        "m2_billions": 21311.1,
+        "effective_rate_pct": 4.83,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2024-11",
+        "core_cpi": 322.657,
+        "unemployment_pct": 4.2,
+        "m2_billions": 21429.3,
+        "effective_rate_pct": 4.64,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2024-12",
+        "core_cpi": 323.259,
+        "unemployment_pct": 4.1,
+        "m2_billions": 21462,
+        "effective_rate_pct": 4.48,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2025-01",
+        "core_cpi": 324.638,
+        "unemployment_pct": 4,
+        "m2_billions": 21513.6,
+        "effective_rate_pct": 4.33,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2025-02",
+        "core_cpi": 325.465,
+        "unemployment_pct": 4.2,
+        "m2_billions": 21581.1,
+        "effective_rate_pct": 4.33,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2025-03",
+        "core_cpi": 325.69,
+        "unemployment_pct": 4.2,
+        "m2_billions": 21657.4,
+        "effective_rate_pct": 4.33,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2025-04",
+        "core_cpi": 326.467,
+        "unemployment_pct": 4.2,
+        "m2_billions": 21743.3,
+        "effective_rate_pct": 4.33,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2025-05",
+        "core_cpi": 326.893,
+        "unemployment_pct": 4.3,
+        "m2_billions": 21808.8,
+        "effective_rate_pct": 4.33,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2025-06",
+        "core_cpi": 327.658,
+        "unemployment_pct": 4.1,
+        "m2_billions": 21916.1,
+        "effective_rate_pct": 4.33,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2025-07",
+        "core_cpi": 328.682,
+        "unemployment_pct": 4.3,
+        "m2_billions": 21998.1,
+        "effective_rate_pct": 4.33,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2025-08",
+        "core_cpi": 329.7,
+        "unemployment_pct": 4.3,
+        "m2_billions": 22065.9,
+        "effective_rate_pct": 4.33,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2025-09",
+        "core_cpi": 330.418,
+        "unemployment_pct": 4.4,
+        "m2_billions": 22149.2,
+        "effective_rate_pct": 4.22,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2025-10",
+        "core_cpi": null,
+        "unemployment_pct": null,
+        "m2_billions": 22223.1,
+        "effective_rate_pct": 4.09,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2025-11",
+        "core_cpi": 331.043,
+        "unemployment_pct": 4.5,
+        "m2_billions": 22253.2,
+        "effective_rate_pct": 3.88,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2025-12",
+        "core_cpi": 331.814,
+        "unemployment_pct": 4.4,
+        "m2_billions": 22328.8,
+        "effective_rate_pct": 3.72,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2026-01",
+        "core_cpi": 332.793,
+        "unemployment_pct": 4.3,
+        "m2_billions": 22386.6,
+        "effective_rate_pct": 3.64,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2026-02",
+        "core_cpi": 333.512,
+        "unemployment_pct": 4.4,
+        "m2_billions": 22572.3,
+        "effective_rate_pct": 3.64,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2026-03",
+        "core_cpi": 334.165,
+        "unemployment_pct": 4.3,
+        "m2_billions": 22613.9,
+        "effective_rate_pct": 3.64,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2026-04",
+        "core_cpi": 335.423,
+        "unemployment_pct": 4.3,
+        "m2_billions": 22728,
+        "effective_rate_pct": 3.64,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2026-05",
+        "core_cpi": 336.121,
+        "unemployment_pct": 4.3,
+        "m2_billions": 22980.9,
+        "effective_rate_pct": 3.63,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2026-06",
+        "core_cpi": 336.065,
+        "unemployment_pct": 4.2,
+        "m2_billions": 23077.7,
+        "effective_rate_pct": 3.63,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2026-07",
+        "core_cpi": 336.789,
+        "unemployment_pct": 4.1,
+        "m2_billions": 23177.4,
+        "effective_rate_pct": 3.63,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2026-08",
+        "core_cpi": 337.765,
+        "unemployment_pct": 4.1,
+        "m2_billions": 23300.9,
+        "effective_rate_pct": 3.63,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      },
+      {
+        "month": "2026-09",
+        "core_cpi": 338.896,
+        "unemployment_pct": 4.2,
+        "m2_billions": 23413.9,
+        "effective_rate_pct": 3.75,
+        "available_at": "2026-11-14T13:33:09.752Z"
+      }
+    ]
+  },
+  "fear": {
+    "value": 53,
+    "classification": "Neutral",
+    "timestamp": 1792281600000
+  },
+  "provenance": {
+    "bls": {
+      "url": "https://api.bls.gov/publicAPI/v1/timeseries/data/",
+      "sha256": "ed3e9221288b0cd6f0363192c1111a4d6fdb0645f611b133e2fc9e3eca8100a4",
+      "retrieved_at": "2026-11-14T13:33:09.748Z"
+    },
+    "m2": {
+      "url": "https://www.federalreserve.gov/datadownload/Output.aspx?filetype=csv&from=&label=include&lastobs=&layout=seriescolumn&rel=H6&series=798e2796917702a5f8423426ba7e6b42&to=&type=package",
+      "sha256": "0a33a22343648cabbdcc8241caf4d615782783978af31af9c3811711788253d8",
+      "retrieved_at": "2026-11-14T13:33:09.554Z"
+    },
+    "rates": {
+      "url": "https://www.federalreserve.gov/datadownload/Output.aspx?rel=H15&series=d7e27b7b09a3a7feae95b9c61781fcd8&lastobs=100&from=&to=&filetype=csv&label=include&layout=seriescolumn&type=package",
+      "sha256": "58c003465d3c5369632efd17c829ab8ef54639b35b2f549cf3fc63ca2d948842",
+      "retrieved_at": "2026-11-14T13:33:09.548Z"
+    },
+    "fear": {
+      "url": "https://api.alternative.me/fng/?limit=1",
+      "sha256": "ea0d2eaa44d8219e0ef20c2e89518886921be22e251405927a256e46436dcbdb",
+      "retrieved_at": "2026-10-18T17:03:01.508Z"
+    }
+  }
+}

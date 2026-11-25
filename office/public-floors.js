@@ -1,0 +1,7 @@
+/* Shared public two-page navigation. Only a manual UI language preference is stored. */
+(function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else api.start(document);})(typeof window==='undefined'?globalThis:window,()=>{'use strict';
+function language(value){return value==='es'?'es':'en';}const routes={1:'index.html',2:'planta02.html'};
+function start(doc){const current=doc.body.dataset.publicFloor==='2'?2:1;try{const saved=sessionStorage.getItem('atlas.public.language.v1');if(saved==='es'||saved==='en')doc.documentElement.lang=saved;}catch{}
+function labels(){const en=language(doc.documentElement.lang)==='en';const nav=doc.getElementById('public-floor-selector');nav.setAttribute('aria-label',en?'Choose ATLAS floor':'Elegir planta de ATLAS');nav.querySelectorAll('[data-public-floor-link]').forEach(link=>{const floor=Number(link.dataset.publicFloorLink);link.href=routes[floor];if(floor===current)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');link.querySelector('.floor-number').textContent=(en?'FLOOR ':'PLANTA ')+String(floor).padStart(2,'0');link.querySelector('.floor-label').textContent=floor===1?(en?'Office & market analysis':'Oficina y análisis'):(en?'Microcaps & narratives':'Microcaps y narrativas');});}
+doc.addEventListener('atlas:languagechange',()=>{try{sessionStorage.setItem('atlas.public.language.v1',language(doc.documentElement.lang));}catch{}labels();});labels();}
+return{language,routes,start};});

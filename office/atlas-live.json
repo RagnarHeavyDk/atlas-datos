@@ -1,0 +1,610 @@
+{
+  "schema": "atlas-live/1",
+  "generated_utc": "2026-11-14T12:37:07+00:00",
+  "simulation_only": true,
+  "note": "Simulacion. No es una recomendacion ni una promesa de rentabilidad.",
+  "bot": {
+    "rule": "atlas-slow-ensemble-v1",
+    "symbol": "BTCUSDT",
+    "fee_per_side": 0.008,
+    "start_date": "2026-11-12",
+    "last_closed_day": "2026-11-12",
+    "last_close": 71460.0,
+    "signal": {
+      "votes_long": 8,
+      "rules": 38,
+      "share_long": 0.2105,
+      "ensemble": 0,
+      "volatility_30d_annual": 0.3607,
+      "target_exposure": 0.0
+    },
+    "portfolio": {
+      "capital": 1000.0,
+      "equity": 950.09,
+      "return_pct": -4.99,
+      "exposure": 0.0,
+      "max_drawdown_pct": -4.99,
+      "trades": 2,
+      "days": 1
+    },
+    "hold_benchmark": {
+      "equity": 926.49,
+      "return_pct": -7.35,
+      "max_drawdown_pct": -7.35
+    },
+    "status_generated_utc": "2026-11-13T10:02:25.747409+00:00",
+    "decisions": [
+      {
+        "run_utc": "2026-11-12T09:43:59.966708+00:00",
+        "exec_day": "2026-11-12",
+        "signal_day": "2026-11-11",
+        "signal_close": "74015.19",
+        "share_long": "0.5526",
+        "vol_30d": "0.351",
+        "target_exposure": "1.0",
+        "exec_open": "74015.2"
+      },
+      {
+        "run_utc": "2026-11-13T10:02:25.754918+00:00",
+        "exec_day": "2026-11-13",
+        "signal_day": "2026-11-12",
+        "signal_close": "71460.0",
+        "share_long": "0.2105",
+        "vol_30d": "0.3607",
+        "target_exposure": "0.0",
+        "exec_open": "71460.0"
+      }
+    ],
+    "trades": [
+      {
+        "day": "2026-11-12",
+        "price_open": "74015.2",
+        "from_exposure": "0.0",
+        "to_exposure": "1.0",
+        "fee_usd": "8.0",
+        "equity_after": "992.0"
+      },
+      {
+        "day": "2026-11-13",
+        "price_open": "71460.0",
+        "from_exposure": "1.0",
+        "to_exposure": "0.0",
+        "fee_usd": "7.662",
+        "equity_after": "950.09"
+      }
+    ],
+    "signal_day": "2026-11-12",
+    "exec_day": "2026-11-13",
+    "source": {
+      "status": "C:\\Users\\Miguel\\.codex\\visualizations\\2026\\09\\11\\01a0915f-07d1-7300-bebc-93b002c37129\\atlas-sim\\bot-state\\status.json",
+      "decisions": "C:\\Users\\Miguel\\.codex\\visualizations\\2026\\09\\11\\01a0915f-07d1-7300-bebc-93b002c37129\\atlas-sim\\bot-state\\decisions.csv",
+      "trades": "C:\\Users\\Miguel\\.codex\\visualizations\\2026\\09\\11\\01a0915f-07d1-7300-bebc-93b002c37129\\atlas-sim\\bot-state\\trades.csv"
+    }
+  },
+  "mia": {
+    "folder": "2026-11-14",
+    "audit_day": "2026-11-14",
+    "source": "C:\\Users\\Miguel\\AppData\\Local\\atlas-cloud\\cloud_out\\2026-11-14",
+    "verdict": {
+      "fecha_utc": "2026-11-13",
+      "veredicto": "OK",
+      "veredicto_codigo": "OK",
+      "hallazgos": [
+        {
+          "comprobacion": "manual",
+          "gravedad": "baja",
+          "evidencia": "replica_binance.json: start_date = 2026-11-12; retroactive_start = true; portfolio.days = 2; portfolio.trades = 2",
+          "explicacion": "La simulación empieza de forma retroactiva y solo tiene 2 días. Con tan poca historia no se puede concluir que la cartera supere a mantener BTC."
+        },
+        {
+          "comprobacion": "C10_equity_gap",
+          "gravedad": "baja",
+          "evidencia": "replica_binance.json: hold_benchmark.equity = 897.17; replica_kraken.json: hold_benchmark.equity = 915.63; checks.json: C10_equity_gap = al cierre 2026-11-13: mantener binance=915.59 kraken=915.61",
+          "explicacion": "La cifra de mantener en las réplicas usa el último precio en vivo (Binance) o la apertura (Kraken), así que no son comparables. Para comparar fuentes se usan solo las cifras al cierre de C10."
+        }
+      ],
+      "resumen": "Todas las comprobaciones pasan (checks.json: code_verdict = OK) y no veo errores materiales. La regla da 7 votos de 38 (replica_binance.json: signal.votes_long = 7, signal.rules = 38), así que la exposición objetivo es 0.0. Aviso: la simulación tiene solo 2 días y empieza de forma retroactiva, por lo que la comparación con mantener BTC es muy poco concluyente.",
+      "coste_tokens_aprox": null
+    },
+    "code_verdict": "OK",
+    "checks": [
+      {
+        "id": "C1_binance_ok",
+        "ok": true,
+        "critical": true,
+        "detail": "reconstruccion completa"
+      },
+      {
+        "id": "C2_kraken_ok",
+        "ok": true,
+        "critical": false,
+        "detail": "reconstruccion completa"
+      },
+      {
+        "id": "C3_fresh",
+        "ok": true,
+        "critical": true,
+        "detail": "ultima vela cerrada 2026-11-13; esperada 2026-11-13"
+      },
+      {
+        "id": "C4_rule_id",
+        "ok": true,
+        "critical": true,
+        "detail": "rule=atlas-slow-ensemble-v1 fee=0.008"
+      },
+      {
+        "id": "C5_target_consistent",
+        "ok": true,
+        "critical": true,
+        "detail": "ensemble=0 target=0.0 votes=7/38"
+      },
+      {
+        "id": "C6_same_day",
+        "ok": true,
+        "critical": true,
+        "detail": "binance=2026-11-13 kraken=2026-11-13"
+      },
+      {
+        "id": "C7_close_gap",
+        "ok": true,
+        "critical": true,
+        "detail": "cierre binance=68314.0 kraken=68235.9 diferencia=0.114 % (max 1.0)"
+      },
+      {
+        "id": "C8_votes_gap",
+        "ok": true,
+        "critical": false,
+        "detail": "votos binance=7 kraken=7 diferencia=0 (max 3)"
+      },
+      {
+        "id": "C9_target_agree",
+        "ok": true,
+        "critical": false,
+        "detail": "exposicion objetivo binance=0.0 kraken=0.0"
+      },
+      {
+        "id": "C10_equity_gap",
+        "ok": true,
+        "critical": false,
+        "detail": "al cierre 2026-11-13: cartera binance=950.09 kraken=950.02 diferencia=0.007 %; mantener binance=915.59 kraken=915.61 diferencia=0.002 % (max 1.0)"
+      }
+    ],
+    "checks_passed": "10/10",
+    "signal_day": "2026-11-13",
+    "sources": {
+      "day": "2026-11-13",
+      "binance_close": 68314.0,
+      "kraken_close": 68235.9,
+      "binance_votes": 7,
+      "kraken_votes": 7
+    },
+    "cost_usd": 0.05
+  },
+  "tests": [
+    {
+      "verdict_line": "NO GENERALIZA",
+      "passed": 2,
+      "total": 17,
+      "r_reported": [
+        2,
+        17
+      ],
+      "markets": [
+        {
+          "market": "^GSPC",
+          "since": null,
+          "rule_cagr_pct": 1.3,
+          "rule_maxdd_pct": -42.5,
+          "hold_cagr_pct": 6.3,
+          "hold_maxdd_pct": -56.8,
+          "p_random_dd": 0.072,
+          "passes_random": false
+        },
+        {
+          "market": "^NDX",
+          "since": null,
+          "rule_cagr_pct": 6.3,
+          "rule_maxdd_pct": -46.7,
+          "hold_cagr_pct": 8.1,
+          "hold_maxdd_pct": -82.9,
+          "p_random_dd": 0.027,
+          "passes_random": true
+        },
+        {
+          "market": "^GDAXI",
+          "since": null,
+          "rule_cagr_pct": 3.1,
+          "rule_maxdd_pct": -35.5,
+          "hold_cagr_pct": 4.9,
+          "hold_maxdd_pct": -72.7,
+          "p_random_dd": 0.003,
+          "passes_random": true
+        },
+        {
+          "market": "^N225",
+          "since": null,
+          "rule_cagr_pct": 0.6,
+          "rule_maxdd_pct": -52.0,
+          "hold_cagr_pct": 4.8,
+          "hold_maxdd_pct": -66.1,
+          "p_random_dd": 0.182,
+          "passes_random": false
+        },
+        {
+          "market": "^HSI",
+          "since": null,
+          "rule_cagr_pct": -1.6,
+          "rule_maxdd_pct": -69.7,
+          "hold_cagr_pct": 1.3,
+          "hold_maxdd_pct": -65.2,
+          "p_random_dd": 0.725,
+          "passes_random": false
+        },
+        {
+          "market": "^FTSE",
+          "since": null,
+          "rule_cagr_pct": -5.7,
+          "rule_maxdd_pct": -83.8,
+          "hold_cagr_pct": 1.6,
+          "hold_maxdd_pct": -52.9,
+          "p_random_dd": 0.996,
+          "passes_random": false
+        },
+        {
+          "market": "^KS11",
+          "since": null,
+          "rule_cagr_pct": 2.8,
+          "rule_maxdd_pct": -62.7,
+          "hold_cagr_pct": 7.3,
+          "hold_maxdd_pct": -55.7,
+          "p_random_dd": 0.768,
+          "passes_random": false
+        },
+        {
+          "market": "^BVSP",
+          "since": null,
+          "rule_cagr_pct": 1.4,
+          "rule_maxdd_pct": -57.1,
+          "hold_cagr_pct": 9.3,
+          "hold_maxdd_pct": -60.0,
+          "p_random_dd": 0.352,
+          "passes_random": false
+        },
+        {
+          "market": "GC=F",
+          "since": null,
+          "rule_cagr_pct": 3.8,
+          "rule_maxdd_pct": -61.3,
+          "hold_cagr_pct": 11.2,
+          "hold_maxdd_pct": -44.4,
+          "p_random_dd": 0.995,
+          "passes_random": false
+        },
+        {
+          "market": "SI=F",
+          "since": null,
+          "rule_cagr_pct": 2.2,
+          "rule_maxdd_pct": -76.9,
+          "hold_cagr_pct": 11.1,
+          "hold_maxdd_pct": -75.8,
+          "p_random_dd": 0.705,
+          "passes_random": false
+        },
+        {
+          "market": "HG=F",
+          "since": null,
+          "rule_cagr_pct": 3.2,
+          "rule_maxdd_pct": -73.7,
+          "hold_cagr_pct": 9.6,
+          "hold_maxdd_pct": -69.4,
+          "p_random_dd": 0.788,
+          "passes_random": false
+        },
+        {
+          "market": "ZN=F",
+          "since": null,
+          "rule_cagr_pct": -4.3,
+          "rule_maxdd_pct": -66.7,
+          "hold_cagr_pct": -0.2,
+          "hold_maxdd_pct": -25.6,
+          "p_random_dd": 1.0,
+          "passes_random": false
+        },
+        {
+          "market": "TLT",
+          "since": null,
+          "rule_cagr_pct": -2.9,
+          "rule_maxdd_pct": -49.2,
+          "hold_cagr_pct": -0.3,
+          "hold_maxdd_pct": -54.4,
+          "p_random_dd": 0.515,
+          "passes_random": false
+        },
+        {
+          "market": "EURUSD=X",
+          "since": null,
+          "rule_cagr_pct": -2.8,
+          "rule_maxdd_pct": -54.5,
+          "hold_cagr_pct": -0.8,
+          "hold_maxdd_pct": -40.0,
+          "p_random_dd": 0.885,
+          "passes_random": false
+        },
+        {
+          "market": "JPY=X",
+          "since": null,
+          "rule_cagr_pct": -3.8,
+          "rule_maxdd_pct": -68.0,
+          "hold_cagr_pct": 1.6,
+          "hold_maxdd_pct": -43.8,
+          "p_random_dd": 0.993,
+          "passes_random": false
+        },
+        {
+          "market": "GBPUSD=X",
+          "since": null,
+          "rule_cagr_pct": -3.5,
+          "rule_maxdd_pct": -58.9,
+          "hold_cagr_pct": -1.7,
+          "hold_maxdd_pct": -49.1,
+          "p_random_dd": 0.879,
+          "passes_random": false
+        },
+        {
+          "market": "AUDUSD=X",
+          "since": null,
+          "rule_cagr_pct": -3.8,
+          "rule_maxdd_pct": -68.0,
+          "hold_cagr_pct": -0.9,
+          "hold_maxdd_pct": -48.0,
+          "p_random_dd": 0.977,
+          "passes_random": false
+        }
+      ],
+      "id": "v1",
+      "source": "RESULTADO_MULTIMERCADO_V1.md",
+      "description": "17 mercados (indices, materias primas, bonos y divisas) · comision 0,8 %",
+      "result_file": "RESULTADO_MULTIMERCADO_V1.md",
+      "result_sha256": "de68d9795790d1df374c0998f23427b2148dbb29bc1a584c2b71abf2e7cf8d0a",
+      "fingerprints_file": "HUELLAS.txt",
+      "fingerprints_sha256": "08c07416401d1d6bca7b91687d000a8dfc2e6d7727cd1e383a9ce0b595add549"
+    },
+    {
+      "verdict_line": "CONFIRMADO (R en 6 de 8; umbral 5)",
+      "passed": 6,
+      "total": 8,
+      "r_reported": [
+        6,
+        8
+      ],
+      "markets": [
+        {
+          "market": "^FCHI (Francia)",
+          "since": null,
+          "rule_cagr_pct": 0.9,
+          "rule_maxdd_pct": -35.3,
+          "hold_cagr_pct": 1.1,
+          "hold_maxdd_pct": -65.3,
+          "p_random_dd": 0.008,
+          "passes_random": true
+        },
+        {
+          "market": "^IBEX (España)",
+          "since": null,
+          "rule_cagr_pct": 2.9,
+          "rule_maxdd_pct": -44.1,
+          "hold_cagr_pct": 1.9,
+          "hold_maxdd_pct": -62.6,
+          "p_random_dd": 0.043,
+          "passes_random": true
+        },
+        {
+          "market": "^AEX (Países Bajos)",
+          "since": null,
+          "rule_cagr_pct": 2.2,
+          "rule_maxdd_pct": -29.2,
+          "hold_cagr_pct": 1.9,
+          "hold_maxdd_pct": -71.6,
+          "p_random_dd": 0.002,
+          "passes_random": true
+        },
+        {
+          "market": "^SSMI (Suiza)",
+          "since": null,
+          "rule_cagr_pct": 1.8,
+          "rule_maxdd_pct": -33.0,
+          "hold_cagr_pct": 2.3,
+          "hold_maxdd_pct": -56.1,
+          "p_random_dd": 0.033,
+          "passes_random": true
+        },
+        {
+          "market": "^GSPTSE (Canadá)",
+          "since": null,
+          "rule_cagr_pct": 5.0,
+          "rule_maxdd_pct": -21.7,
+          "hold_cagr_pct": 5.6,
+          "hold_maxdd_pct": -50.0,
+          "p_random_dd": 0.0,
+          "passes_random": true
+        },
+        {
+          "market": "^TWII (Taiwán)",
+          "since": null,
+          "rule_cagr_pct": 6.6,
+          "rule_maxdd_pct": -38.6,
+          "hold_cagr_pct": 6.6,
+          "hold_maxdd_pct": -66.2,
+          "p_random_dd": 0.014,
+          "passes_random": true
+        },
+        {
+          "market": "^RUT (EE. UU. pequeñas)",
+          "since": null,
+          "rule_cagr_pct": 1.8,
+          "rule_maxdd_pct": -49.0,
+          "hold_cagr_pct": 6.6,
+          "hold_maxdd_pct": -59.9,
+          "p_random_dd": 0.322,
+          "passes_random": false
+        },
+        {
+          "market": "^DJI (EE. UU.)",
+          "since": null,
+          "rule_cagr_pct": 0.6,
+          "rule_maxdd_pct": -49.0,
+          "hold_cagr_pct": 5.8,
+          "hold_maxdd_pct": -53.8,
+          "p_random_dd": 0.521,
+          "passes_random": false
+        }
+      ],
+      "id": "v2",
+      "source": "RESULTADO_INDICES_V2.md",
+      "description": "8 indices nuevos · comision 0,1 %",
+      "result_file": "RESULTADO_INDICES_V2.md",
+      "result_sha256": "c2a4df0bc5f9578d1356e7f1684db4efd31cff1f2c6c44c10e9b38c33f4a4742",
+      "fingerprints_file": "HUELLAS_V2.txt",
+      "fingerprints_sha256": "742b2843ab83696d7b8e0e650d76aab65bb39752968b954c049cc1c49b297dce"
+    },
+    {
+      "verdict_line": "NO CONFIRMADO (R en 0 de 12; umbral 8)",
+      "passed": 0,
+      "total": 12,
+      "r_reported": [
+        0,
+        12
+      ],
+      "markets": [
+        {
+          "market": "BCHUSDT",
+          "since": "2020-08-14",
+          "rule_cagr_pct": -2.8,
+          "rule_maxdd_pct": -58.5,
+          "hold_cagr_pct": 0.4,
+          "hold_maxdd_pct": -94.2,
+          "p_random_dd": 0.158,
+          "passes_random": false
+        },
+        {
+          "market": "LINKUSDT",
+          "since": "2019-10-03",
+          "rule_cagr_pct": 15.9,
+          "rule_maxdd_pct": -71.5,
+          "hold_cagr_pct": 32.3,
+          "hold_maxdd_pct": -90.2,
+          "p_random_dd": 0.737,
+          "passes_random": false
+        },
+        {
+          "market": "DOGEUSDT",
+          "since": "2020-03-21",
+          "rule_cagr_pct": 26.3,
+          "rule_maxdd_pct": -75.1,
+          "hold_cagr_pct": 83.6,
+          "hold_maxdd_pct": -92.3,
+          "p_random_dd": 0.776,
+          "passes_random": false
+        },
+        {
+          "market": "TRXUSDT",
+          "since": "2019-02-26",
+          "rule_cagr_pct": 29.7,
+          "rule_maxdd_pct": -58.8,
+          "hold_cagr_pct": 41.4,
+          "hold_maxdd_pct": -78.2,
+          "p_random_dd": 0.115,
+          "passes_random": false
+        },
+        {
+          "market": "XLMUSDT",
+          "since": "2019-02-15",
+          "rule_cagr_pct": 5.1,
+          "rule_maxdd_pct": -55.9,
+          "hold_cagr_pct": 15.2,
+          "hold_maxdd_pct": -90.3,
+          "p_random_dd": 0.24,
+          "passes_random": false
+        },
+        {
+          "market": "ETCUSDT",
+          "since": "2019-02-27",
+          "rule_cagr_pct": -3.0,
+          "rule_maxdd_pct": -67.3,
+          "hold_cagr_pct": 10.1,
+          "hold_maxdd_pct": -95.5,
+          "p_random_dd": 0.604,
+          "passes_random": false
+        },
+        {
+          "market": "ATOMUSDT",
+          "since": "2020-01-14",
+          "rule_cagr_pct": -4.6,
+          "rule_maxdd_pct": -74.3,
+          "hold_cagr_pct": -12.5,
+          "hold_maxdd_pct": -97.2,
+          "p_random_dd": 0.758,
+          "passes_random": false
+        },
+        {
+          "market": "DOTUSDT",
+          "since": "2021-05-05",
+          "rule_cagr_pct": -10.3,
+          "rule_maxdd_pct": -59.5,
+          "hold_cagr_pct": -46.3,
+          "hold_maxdd_pct": -98.6,
+          "p_random_dd": 0.473,
+          "passes_random": false
+        },
+        {
+          "market": "AVAXUSDT",
+          "since": "2021-06-09",
+          "rule_cagr_pct": 7.3,
+          "rule_maxdd_pct": -57.0,
+          "hold_cagr_pct": -5.7,
+          "hold_maxdd_pct": -95.6,
+          "p_random_dd": 0.587,
+          "passes_random": false
+        },
+        {
+          "market": "UNIUSDT",
+          "since": "2021-06-04",
+          "rule_cagr_pct": -15.6,
+          "rule_maxdd_pct": -76.4,
+          "hold_cagr_pct": -19.9,
+          "hold_maxdd_pct": -92.4,
+          "p_random_dd": 0.924,
+          "passes_random": false
+        },
+        {
+          "market": "FILUSDT",
+          "since": "2021-07-02",
+          "rule_cagr_pct": -3.5,
+          "rule_maxdd_pct": -45.0,
+          "hold_cagr_pct": -53.4,
+          "hold_maxdd_pct": -99.4,
+          "p_random_dd": 0.347,
+          "passes_random": false
+        },
+        {
+          "market": "AAVEUSDT",
+          "since": "2021-07-02",
+          "rule_cagr_pct": -6.2,
+          "rule_maxdd_pct": -55.6,
+          "hold_cagr_pct": -6.9,
+          "hold_maxdd_pct": -88.4,
+          "p_random_dd": 0.347,
+          "passes_random": false
+        }
+      ],
+      "id": "v3",
+      "source": "RESULTADO_CRIPTO_V3.md",
+      "description": "12 criptomonedas nuevas · comision 0,8 %",
+      "result_file": "RESULTADO_CRIPTO_V3.md",
+      "result_sha256": "00448b454ae85134a9468c3cf9c9acde159d18a90f22d86424846a29bb9de60a",
+      "fingerprints_file": "HUELLAS_V3.txt",
+      "fingerprints_sha256": "4d1e1385b23e9de23e6a3393cb95ded8e94b0dbf272d6766606948c0092a1e2b"
+    }
+  ],
+  "missing": []
+}

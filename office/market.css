@@ -1,0 +1,11 @@
+.market-desk {padding:clamp(24px,5vw,70px) 5%;max-width:1500px;margin:auto}
+.market-desk > section {margin:0 0 44px;scroll-margin-top:20px}
+.market-desk article {border-color:var(--line);border-radius:0;background:#131014}
+.market-desk .section-heading h2 {color:var(--paper);font-size:clamp(30px,5vw,52px);line-height:1.1}
+.market-desk .eyebrow,.market-desk .context-kicker {color:var(--red)}
+.market-desk a {text-decoration:underline;text-underline-offset:3px}
+.market-desk .context-grid,.market-desk .latest-grid {min-width:0}
+.market-desk article {min-width:0;overflow-wrap:anywhere}
+#research h2 {font-size:clamp(30px,5vw,52px)}
+#research .modules {margin:0}
+#research .modules a {text-decoration:underline;text-underline-offset:4px}

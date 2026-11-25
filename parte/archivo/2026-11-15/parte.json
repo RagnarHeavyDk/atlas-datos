@@ -1,0 +1,66 @@
+{
+ "schema": "atlas-parte/1",
+ "date": "2026-11-15",
+ "es": {
+  "headline": "Sale dinero de cripto y *mandan los cortos*",
+  "keys": [
+   {
+    "fact": "stablecoins",
+    "title": "Las stablecoins se encogen",
+    "text": "Son el «efectivo» del mundo cripto. Que salgan dólares del ecosistema suele significar menos dinero nuevo dispuesto a comprar."
+   },
+   {
+    "fact": "funding",
+    "title": "La financiación, en mínimos del mes",
+    "text": "Es lo que se pagan largos y cortos en los futuros sin vencimiento. Negativa: dominan las apuestas bajistas."
+   },
+   {
+    "fact": "open_interest",
+    "title": "El interés abierto cae de golpe",
+    "text": "Es el dinero comprometido en futuros abiertos. Una caída así suele indicar posiciones que se cierran, a veces a la fuerza."
+   }
+  ],
+  "blocks": {
+   "liquidity": "El Tesoro tiene 933,1 mil millones de dólares en su cuenta de la Fed, 3,1 mil millones menos que hace 5 días: un movimiento normal. El dinero aparcado en los repos inversos de la Fed está casi a cero (0,3 mil millones). El balance de la Fed no estuvo disponible hoy, así que tampoco la liquidez neta.",
+   "positioning": "En los futuros de BTC de CME, los fondos apalancados siguen netos cortos, pero en su nivel menos corto del último medio año (suelen ser arbitrajes, no apuestas bajistas). Las gestoras de activos han reducido su posición. En los perpetuos, la financiación está ligeramente negativa y el interés abierto ha caído un 6,21 % en un día.",
+   "sentiment": "Las opciones descuentan un movimiento diario típico de 2,31 % (volatilidad implícita del 44,1 %, normal para el último año). BTC cotiza algo más barato en Coinbase que en Binance: suele indicar más venta en EE. UU. Las stablecoins pierden 15,99 mil millones en 30 días. Las comisiones de la red Bitcoin están en mínimos: poca prisa por mover monedas.",
+   "rule": "Los votos han caído en cinco días de 20 a 2. La regla salió el 13-nov y desde entonces BTC ha caído más."
+  },
+  "watch": [
+   "**Cierre diario frente a 74.747,5 $.** Por encima, la regla vuelve a entrar en la simulación. Hoy está a +16,52 %.",
+   "**Si los votos se estabilizan.** Hoy 2 de 38, viniendo de 20.",
+   "**Financiación y stablecoins.** Si la financiación sale del percentil 7 y la oferta de stablecoins deja de bajar, se habría frenado la salida de dinero."
+  ]
+ },
+ "en": {
+  "headline": "Money leaves crypto and *the shorts are in charge*",
+  "keys": [
+   {
+    "fact": "stablecoins",
+    "title": "Stablecoins are shrinking",
+    "text": "They are the \"cash\" of the crypto world. Dollars leaving the ecosystem usually means less new money ready to buy."
+   },
+   {
+    "fact": "funding",
+    "title": "Funding at monthly lows",
+    "text": "What longs and shorts pay each other on perpetual futures. Negative: bearish bets dominate."
+   },
+   {
+    "fact": "open_interest",
+    "title": "Open interest drops sharply",
+    "text": "The money committed to open futures. A drop like this usually means positions being closed, sometimes by force."
+   }
+  ],
+  "blocks": {
+   "liquidity": "The Treasury holds $933.1 billion in its Fed account, $3.1 billion less than 5 days ago: a normal move. Money parked in the Fed's reverse repos is close to zero ($0.3 billion). The Fed balance sheet was not available today, so neither is net liquidity.",
+   "positioning": "In CME bitcoin futures, leveraged funds remain net short, but at their least short level in six months (these are usually basis trades, not bearish bets). Asset managers have cut their position. On perpetuals, funding is slightly negative and open interest fell 6.21% in one day.",
+   "sentiment": "Options price a typical daily move of 2.31% (implied volatility of 44.1%, normal for the past year). BTC trades slightly cheaper on Coinbase than on Binance, which usually points to more selling in the US. Stablecoins have lost $15.99 billion in 30 days. Bitcoin network fees are at their floor: no rush to move coins.",
+   "rule": "Votes have fallen from 20 to 2 in five days. The rule exited on 13 Nov and BTC has fallen further since."
+  },
+  "watch": [
+   "**Daily close versus $74,747.5.** Above it, the rule re-enters in the simulation. Today it is +16.52% away.",
+   "**Whether votes stabilise.** 2 of 38 today, down from 20.",
+   "**Funding and stablecoins.** If funding leaves the 7th percentile and stablecoin supply stops falling, the outflow would have slowed."
+  ]
+ }
+}

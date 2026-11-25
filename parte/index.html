@@ -1,0 +1,514 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Parte ATLAS</title><link rel="icon" href="../office/mark-1.svg">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Parte diario: columna de lectura con tres niveles (30 s, 3 min, a fondo). Tarjetas de dato con barra de percentil frente a su propio historial. Ambientación oscura única, a juego con la web nueva. */
+:root{
+  --bg:#08080b; --panel:#0f1014; --panel2:#14161b; --line:#23252c; --fg:#f2efe9; --mute:#9095a0; --dim:#5d626c;
+  --red:#ff4757; --cyan:#4fd8e8; --amber:#f2b441; --ok:#5be38c;
+  --f-d:"Space Grotesk","Helvetica Neue",Arial,sans-serif; --f-b:Inter,"Helvetica Neue",Arial,sans-serif; --f-m:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg);color:var(--fg)}
+body{font-family:var(--f-b);font-size:16px;line-height:1.55;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+.wrap{max-width:1080px;margin:0 auto;display:grid;gap:40px}
+a{color:var(--cyan)}
+.mono{font-family:var(--f-m);letter-spacing:.04em}
+/* cabecera */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:rgba(8,8,11,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;padding-block:12px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--f-d);font-weight:700;letter-spacing:.14em;margin-right:auto}
+.brand img{width:24px;height:24px}
+.nav{display:flex;gap:6px}
+.nav a{font:600 11px/1 var(--f-m);letter-spacing:.08em;text-transform:uppercase;color:var(--fg);text-decoration:none;padding:8px 10px;border:1px solid var(--line)}
+.nav a:hover,.nav a:focus-visible{border-color:var(--red);outline:none}
+.chip{font:600 10.5px/1 var(--f-m);letter-spacing:.08em;text-transform:uppercase;padding:6px 8px;border:1px solid #5a1820;color:var(--red)}
+/* portada del parte */
+.hero{display:grid;gap:14px;padding-top:28px}
+.eyebrow{font:600 11px/1 var(--f-m);letter-spacing:.14em;color:var(--red);text-transform:uppercase}
+h1{font-family:var(--f-d);font-weight:700;font-size:clamp(34px,6vw,64px);line-height:1;margin:0;letter-spacing:-.015em;text-wrap:balance}
+h1 em{font-style:normal;color:var(--red)}
+.meta{font-family:var(--f-m);font-size:12px;color:var(--mute);display:flex;flex-wrap:wrap;gap:6px 18px}
+h2{font-family:var(--f-d);font-weight:700;font-size:26px;margin:0;display:flex;align-items:baseline;gap:12px;text-wrap:balance}
+h2 small{font:500 11px/1 var(--f-m);color:var(--dim);letter-spacing:.1em;text-transform:uppercase}
+section{display:grid;gap:16px;scroll-margin-top:72px}
+/* 30 segundos */
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.key{background:var(--panel);border:1px solid var(--line);padding:18px;display:grid;gap:10px;align-content:start;min-width:0;position:relative}
+.key .n{font:700 12px/1 var(--f-m);color:var(--red)}
+.key h3{font-family:var(--f-d);font-size:21px;line-height:1.15;margin:0;text-wrap:balance}
+.key .big{font-family:var(--f-d);font-weight:700;font-size:34px;line-height:1;font-variant-numeric:tabular-nums}
+.key .big small{font:500 13px var(--f-m);color:var(--mute)}
+.key p{margin:0;color:var(--mute);font-size:14.5px}
+.tag{font:600 10.5px/1 var(--f-m);letter-spacing:.06em;padding:4px 6px;border:1px solid currentColor;justify-self:start;text-transform:uppercase}
+.tag.neg{color:var(--red)}.tag.pos{color:var(--ok)}.tag.neu{color:var(--amber)}
+/* regla */
+.rule{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px;border:1px solid var(--line);background:linear-gradient(135deg,#130c10,var(--panel) 55%);padding:22px}
+.rule .state{font-family:var(--f-d);font-weight:700;font-size:28px;line-height:1.1}
+.rule .state b{color:var(--red)}
+.rule p{margin:8px 0 0;color:var(--mute)}
+.gauge{display:grid;gap:8px;align-content:center}
+.gbar{position:relative;height:18px;background:#191b21;border:1px solid var(--line)}
+.gbar .fill{position:absolute;inset:0 auto 0 0;background:var(--red)}
+.gbar .mk{position:absolute;top:-6px;bottom:-6px;width:2px;background:var(--fg)}
+.gbar .mk.x{background:var(--mute)}
+.glab{display:flex;justify-content:space-between;font:500 11px var(--f-m);color:var(--mute)}
+.lvl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:6px}
+.lvl div{background:var(--panel);padding:10px 12px;min-width:0}
+.lvl b{display:block;font-family:var(--f-d);font-size:20px;font-variant-numeric:tabular-nums}
+.lvl span{font:500 10.5px var(--f-m);color:var(--mute);text-transform:uppercase;letter-spacing:.06em}
+/* 3 minutos */
+.block{display:grid;gap:10px}
+.block h3{font:600 12px/1 var(--f-m);letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);margin:6px 0 0}
+.block .prose{margin:0;max-width:72ch;color:#d6d3cd}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+.card{background:var(--panel);border:1px solid var(--line);padding:14px 14px 12px;display:grid;gap:8px;min-width:0}
+.card .lb{font-size:13px;color:var(--mute);line-height:1.35}
+.card .v{font-family:var(--f-d);font-weight:700;font-size:26px;line-height:1;font-variant-numeric:tabular-nums}
+.card .v small{font:500 11.5px var(--f-m);color:var(--mute);margin-left:4px}
+.card .ch{font:600 12px var(--f-m)}
+.card .ch.neg{color:var(--red)}.card .ch.pos{color:var(--ok)}.card .ch.neu{color:var(--mute)}
+.pct{display:grid;gap:4px}
+.pct .bar{position:relative;height:6px;background:linear-gradient(90deg,#1f2a33,#2a2d36 50%,#33232a)}
+.pct .bar i{position:absolute;top:-4px;width:3px;height:14px;background:var(--fg)}
+.pct .pl{display:flex;justify-content:space-between;font:500 10px var(--f-m);color:var(--dim)}
+.card .src{font:500 10.5px var(--f-m);color:var(--dim);display:flex;justify-content:space-between;gap:8px}
+.card .src a{color:var(--dim)}
+.card.na{border-style:dashed;opacity:.75}
+.card.flag{border-color:#4a2a1a;box-shadow:inset 3px 0 0 var(--amber)}
+details.more{border-top:1px solid var(--line);padding-top:6px}
+details.more summary{cursor:pointer;font:500 11px var(--f-m);color:var(--mute);letter-spacing:.04em}
+details.more p{margin:6px 0 0;font-size:13px;color:var(--mute)}
+/* vigilar y fuentes */
+.watch{display:grid;gap:10px;counter-reset:w}
+.watch li{list-style:none;border:1px solid var(--line);padding:14px 16px 14px 52px;position:relative;background:var(--panel)}
+.watch li::before{counter-increment:w;content:counter(w,decimal-leading-zero);position:absolute;left:16px;top:14px;font:700 13px var(--f-m);color:var(--amber)}
+.watch ul{padding:0;margin:0;display:grid;gap:10px}
+.srcs{width:100%;border-collapse:collapse;font-size:13.5px}
+.srcs th,.srcs td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.srcs th{font:600 10.5px var(--f-m);color:var(--dim);letter-spacing:.08em;text-transform:uppercase}
+.srcs td.d{font-family:var(--f-m);font-size:12px;color:var(--mute);white-space:nowrap}
+.tw{overflow-x:auto;border:1px solid var(--line)}
+span[lang]{display:contents}
+.lvl b span{font:inherit;color:inherit;text-transform:none;letter-spacing:inherit}
+html[data-lang="en"] [lang="es"],html:not([data-lang="en"]) [lang="en"]{display:none!important}
+.lang{display:flex;border:1px solid var(--line)}
+.lang button{font:600 11px/1 var(--f-m);letter-spacing:.08em;padding:7px 9px;background:none;color:var(--mute);border:0;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.lang button:focus-visible{outline:2px solid var(--cyan);outline-offset:1px}
+.disc{font-size:13px;color:var(--dim);border-top:1px solid var(--line);padding-top:14px}
+@media (max-width:820px){.three{grid-template-columns:minmax(0,1fr)}.rule{grid-template-columns:minmax(0,1fr)}.nav{display:none}}
+@media (max-width:420px){.lvl{grid-template-columns:minmax(0,1fr)}}
+.daysel select{font:600 11px var(--f-m);background:var(--panel);color:var(--fg);border:1px solid var(--line);padding:6px 8px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+<script>
+// Copia del último parte para la vista previa sin servidor. En la web se usan parte.json y datos.json.
+window.PARTE_EMBED = {
+ "schema": "atlas-parte/1",
+ "date": "2026-11-15",
+ "es": {
+  "headline": "Sale dinero de cripto y *mandan los cortos*",
+  "keys": [
+   {
+    "fact": "stablecoins",
+    "title": "Las stablecoins se encogen",
+    "text": "Son el «efectivo» del mundo cripto. Que salgan dólares del ecosistema suele significar menos dinero nuevo dispuesto a comprar."
+   },
+   {
+    "fact": "funding",
+    "title": "La financiación, en mínimos del mes",
+    "text": "Es lo que se pagan largos y cortos en los futuros sin vencimiento. Negativa: dominan las apuestas bajistas."
+   },
+   {
+    "fact": "open_interest",
+    "title": "El interés abierto cae de golpe",
+    "text": "Es el dinero comprometido en futuros abiertos. Una caída así suele indicar posiciones que se cierran, a veces a la fuerza."
+   }
+  ],
+  "blocks": {
+   "liquidity": "El Tesoro tiene 933,1 mil millones de dólares en su cuenta de la Fed, 3,1 mil millones menos que hace 5 días: un movimiento normal. El dinero aparcado en los repos inversos de la Fed está casi a cero (0,3 mil millones). El balance de la Fed no estuvo disponible hoy, así que tampoco la liquidez neta.",
+   "positioning": "En los futuros de BTC de CME, los fondos apalancados siguen netos cortos, pero en su nivel menos corto del último medio año (suelen ser arbitrajes, no apuestas bajistas). Las gestoras de activos han reducido su posición. En los perpetuos, la financiación está ligeramente negativa y el interés abierto ha caído un 6,21 % en un día.",
+   "sentiment": "Las opciones descuentan un movimiento diario típico de 2,31 % (volatilidad implícita del 44,1 %, normal para el último año). BTC cotiza algo más barato en Coinbase que en Binance: suele indicar más venta en EE. UU. Las stablecoins pierden 15,99 mil millones en 30 días. Las comisiones de la red Bitcoin están en mínimos: poca prisa por mover monedas.",
+   "rule": "Los votos han caído en cinco días de 20 a 2. La regla salió el 13-nov y desde entonces BTC ha caído más."
+  },
+  "watch": [
+   "**Cierre diario frente a 74.747,5 $.** Por encima, la regla vuelve a entrar en la simulación. Hoy está a +16,52 %.",
+   "**Si los votos se estabilizan.** Hoy 2 de 38, viniendo de 20.",
+   "**Financiación y stablecoins.** Si la financiación sale del percentil 7 y la oferta de stablecoins deja de bajar, se habría frenado la salida de dinero."
+  ]
+ },
+ "en": {
+  "headline": "Money leaves crypto and *the shorts are in charge*",
+  "keys": [
+   {
+    "fact": "stablecoins",
+    "title": "Stablecoins are shrinking",
+    "text": "They are the \"cash\" of the crypto world. Dollars leaving the ecosystem usually means less new money ready to buy."
+   },
+   {
+    "fact": "funding",
+    "title": "Funding at monthly lows",
+    "text": "What longs and shorts pay each other on perpetual futures. Negative: bearish bets dominate."
+   },
+   {
+    "fact": "open_interest",
+    "title": "Open interest drops sharply",
+    "text": "The money committed to open futures. A drop like this usually means positions being closed, sometimes by force."
+   }
+  ],
+  "blocks": {
+   "liquidity": "The Treasury holds $933.1 billion in its Fed account, $3.1 billion less than 5 days ago: a normal move. Money parked in the Fed's reverse repos is close to zero ($0.3 billion). The Fed balance sheet was not available today, so neither is net liquidity.",
+   "positioning": "In CME bitcoin futures, leveraged funds remain net short, but at their least short level in six months (these are usually basis trades, not bearish bets). Asset managers have cut their position. On perpetuals, funding is slightly negative and open interest fell 6.21% in one day.",
+   "sentiment": "Options price a typical daily move of 2.31% (implied volatility of 44.1%, normal for the past year). BTC trades slightly cheaper on Coinbase than on Binance, which usually points to more selling in the US. Stablecoins have lost $15.99 billion in 30 days. Bitcoin network fees are at their floor: no rush to move coins.",
+   "rule": "Votes have fallen from 20 to 2 in five days. The rule exited on 13 Nov and BTC has fallen further since."
+  },
+  "watch": [
+   "**Daily close versus $74,747.5.** Above it, the rule re-enters in the simulation. Today it is +16.52% away.",
+   "**Whether votes stabilise.** 2 of 38 today, down from 20.",
+   "**Funding and stablecoins.** If funding leaves the 7th percentile and stablecoin supply stops falling, the outflow would have slowed."
+  ]
+ }
+};
+window.DATOS_EMBED = {
+ "schema": "atlas-parte-datos/1",
+ "generated_utc": "2026-11-15T14:51:00+00:00",
+ "sources_ok": "11/13",
+ "errors": {
+  "fed_balance": "HTTPError 503",
+  "polymarket": "HTTPError 406"
+ },
+ "facts": [
+  {
+   "id": "tga",
+   "value": 933.1,
+   "unit": "bn",
+   "asof": "2026-11-12",
+   "change_5d": -3.1,
+   "z_change_5d": -0.08,
+   "percentile_120d": 57.5
+  },
+  {
+   "id": "rrp",
+   "value": 0.3,
+   "unit": "bn",
+   "asof": "2026-11-13",
+   "change_5d": 0.2
+  },
+  {
+   "id": "cftc_lev",
+   "value": -2591,
+   "unit": "contracts",
+   "asof": "2026-11-03",
+   "change_1w": 1388,
+   "percentile_26w": 100.0
+  },
+  {
+   "id": "cftc_am",
+   "value": 2403,
+   "unit": "contracts",
+   "asof": "2026-11-03",
+   "change_1w": -351,
+   "percentile_26w": 19.2
+  },
+  {
+   "id": "funding",
+   "value": -0.0,
+   "unit": "% / 8h",
+   "asof": "2026-11-15 08:00",
+   "annualized_pct": -0.1,
+   "percentile_33d": 7.0,
+   "z": -1.84
+  },
+  {
+   "id": "open_interest",
+   "value": 3.24,
+   "unit": "bn",
+   "asof": "2026-11-14",
+   "change_1d_pct": -6.21,
+   "z_change_1d": -2.0,
+   "percentile_hist": 69.4
+  },
+  {
+   "id": "dvol",
+   "value": 44.1,
+   "unit": "%",
+   "asof": "2026-11-15",
+   "change_1d": -3.2,
+   "percentile_1y": 65.5,
+   "move_1d_pct": 2.31
+  },
+  {
+   "id": "coinbase_premium",
+   "value": -0.101,
+   "unit": "%",
+   "asof": "2026-11-15 14:51",
+   "coinbase": 64790.51,
+   "binance": 64856.15
+  },
+  {
+   "id": "stablecoins",
+   "value": 287.1,
+   "unit": "bn",
+   "asof": "2026-11-15",
+   "change_7d": -4.42,
+   "change_30d": -15.99,
+   "z_change_7d": -2.18
+  },
+  {
+   "id": "btc_fees",
+   "value": 1,
+   "unit": "sat/vB",
+   "asof": "2026-11-15 14:51",
+   "hour_fee": 1
+  },
+  {
+   "id": "btc_price",
+   "value": 64150.0,
+   "unit": "USD",
+   "asof": "2026-11-14",
+   "change_1d_pct": -6.1,
+   "change_7d_pct": -15.44
+  },
+  {
+   "id": "atlas_rule",
+   "value": "2/38",
+   "unit": "rules",
+   "asof": "2026-11-14",
+   "in_market": false,
+   "votes_last5": [
+    20,
+    21,
+    8,
+    7,
+    2
+   ],
+   "entry_level": 74747.5,
+   "entry_distance_pct": 16.52,
+   "exit_level": 73023.2,
+   "exit_distance_pct": 13.83,
+   "families": {
+    "media": {
+     "long": 0,
+     "total": 16
+    },
+    "momentum": {
+     "long": 2,
+     "total": 13
+    },
+    "canal": {
+     "long": 0,
+     "total": 9
+    }
+   }
+  }
+ ],
+ "unusual": [
+  {
+   "id": "cftc_lev",
+   "metric": "percentile_26w",
+   "percentile": 100.0
+  },
+  {
+   "id": "stablecoins",
+   "metric": "z_change_7d",
+   "z": -2.18
+  },
+  {
+   "id": "funding",
+   "metric": "percentile_33d",
+   "percentile": 7.0
+  },
+  {
+   "id": "open_interest",
+   "metric": "z_change_1d",
+   "z": -2.0
+  }
+ ]
+};
+</script>
+<div class="wrap">
+  <header class="top">
+    <div class="brand"><img src="../office/mark-1.svg" alt="" width="24" height="24">ATLAS</div>
+    <nav class="nav" aria-label="Niveles de lectura"><a href="#s30">30 s</a><a href="#s3m">3 min</a><a href="#vigilar" data-t="nav_watch"></a><a href="../office/evidence.html" id="evidence-link" data-t="nav_src"></a><a href="../office/simulation.html" id="rule-link">Our rule</a></nav>
+    <label class="daysel"><span class="sr" data-t="archive"></span><select id="day" aria-label="Archivo"></select></label>
+    <div class="lang" role="group" aria-label="Idioma / Language"><button type="button" id="bES">ES</button><button type="button" id="bEN">EN</button></div>
+  </header>
+
+  <div class="hero">
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1 id="headline"></h1>
+    <div class="meta" id="meta"></div>
+  </div>
+
+  <section id="s30"><h2><span data-t="h30"></span> <small data-t="h30s"></small></h2><div class="three" id="keys"></div></section>
+
+  <section id="regla"><h2><span data-t="hrule"></span> <small data-t="hrules"></small></h2>
+    <div class="rule">
+      <div><div class="state" id="ruleState"></div><p id="ruleText"></p></div>
+      <div class="gauge">
+        <div class="glab"><span>0</span><span data-t="exit15"></span><span data-t="enter23"></span><span>38</span></div>
+        <div class="gbar" id="gbar" role="img"><span class="fill" id="gfill"></span><i class="mk x" style="left:39.5%"></i><i class="mk" style="left:60.5%"></i></div>
+        <div class="lvl" id="lvl"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="s3m"><h2><span data-t="h3m"></span> <small data-t="h3ms"></small></h2>
+    <div class="block"><h3 data-t="liq"></h3><p class="prose" id="b-liquidity"></p><div class="cards" id="c-liq"></div></div>
+    <div class="block"><h3 data-t="pos"></h3><p class="prose" id="b-positioning"></p><div class="cards" id="c-pos"></div></div>
+    <div class="block"><h3 data-t="sen"></h3><p class="prose" id="b-sentiment"></p><div class="cards" id="c-sen"></div></div>
+  </section>
+
+  <section id="vigilar"><h2 data-t="hwatch"></h2><div class="watch"><ul id="watch"></ul></div></section>
+
+  <section id="fuentes"><h2><span data-t="hsrc"></span> <small data-t="hsrcs"></small></h2>
+    <div class="tw"><table class="srcs"><thead><tr><th data-t="th1"></th><th data-t="th2"></th><th data-t="th3"></th></tr></thead><tbody id="srcs"></tbody></table></div>
+    <p class="disc" data-t="disc"></p>
+  </section>
+</div>
+
+<script>
+/* ATLAS · Parte diario. Plantilla única: lee parte.json (texto de Celia, ES/EN) y datos.json (cifras de las fuentes).
+   Archivo: ?d=AAAA-MM-DD carga archivo/AAAA-MM-DD/. La lista de días sale de index.json.
+   Las cifras de las tarjetas las formatea este código a partir de datos.json, nunca el texto del modelo. */
+const T = {
+  es:{nav_watch:"Mañana",nav_src:"Fuentes",archive:"Archivo",h30:"En 30 segundos",h30s:"lo que se sale de lo normal hoy",hrule:"Nuestra regla",hrules:"simulación · regla congelada desde el 11-nov",
+      exit15:"sale ≤ 15",enter23:"entra ≥ 23",h3m:"En 3 minutos",h3ms:"cada dato frente a su propio historial",liq:"Liquidez",pos:"Posicionamiento",sen:"Sentimiento y riesgo",
+      hwatch:"Qué vigilar mañana",hsrc:"Fuentes",hsrcs:"datos públicos y oficiales · fecha del dato",th1:"Dato",th2:"Fuente",th3:"Fecha",
+      disc:"Simulación e investigación. No es asesoramiento financiero ni una recomendación personal. Cada cifra procede de la fuente indicada y un programa comprueba antes de publicar que ninguna cifra del texto carece de respaldo. Los percentiles comparan el dato con su propio historial reciente; «z» mide cuántas desviaciones típicas se aleja de lo normal.",
+      eyebrow:d=>"Parte diario · "+d, sources:(a,b)=>`${a} de ${b} fuentes`, checked:"0 cifras sin respaldo · escrito por Celia · auditado por código",
+      out:"Fuera del mercado", in:"Dentro del mercado", rulesLong:"reglas en largo", close:"cierre", enterAbove:"entraría por encima", exitBelow:"saldría en o por debajo", dist:"distancia",
+      na:"Hoy no disponible", what:"Qué significa", min:"mín.", max:"máx.", pct:"percentil", unusualZ:"Inusual · z", pctTag:p=>`Percentil ${p}`, ruleRow:"Cierre de BTC y regla ATLAS", own:"Binance · cálculo propio", naShort:"no disponible", locale:"es-ES"},
+  en:{nav_watch:"Tomorrow",nav_src:"Sources",archive:"Archive",h30:"In 30 seconds",h30s:"what is out of the ordinary today",hrule:"Our rule",hrules:"simulation · rule frozen since 11 Nov",
+      exit15:"exit ≤ 15",enter23:"enter ≥ 23",h3m:"In 3 minutes",h3ms:"each figure against its own history",liq:"Liquidity",pos:"Positioning",sen:"Sentiment and risk",
+      hwatch:"What to watch tomorrow",hsrc:"Sources",hsrcs:"public and official data · data date",th1:"Data",th2:"Source",th3:"Date",
+      disc:"Simulation and research. This is not financial advice or a personal recommendation. Every figure comes from the source shown, and a program checks before publishing that no figure in the text lacks support. Percentiles compare each figure with its own recent history; \"z\" measures how many standard deviations it sits from normal.",
+      eyebrow:d=>"Daily brief · "+d, sources:(a,b)=>`${a} of ${b} sources`, checked:"0 unsupported figures · written by Celia · checked by code",
+      out:"Out of the market", in:"In the market", rulesLong:"rules long", close:"close", enterAbove:"would enter above", exitBelow:"would exit at or below", dist:"distance",
+      na:"Not available today", what:"What it means", min:"min", max:"max", pct:"percentile", unusualZ:"Unusual · z", pctTag:p=>`${p}th percentile`, ruleRow:"BTC close and ATLAS rule", own:"Binance · own calculation", naShort:"not available", locale:"en-GB"}
+};
+// Definición de cada tarjeta: etiqueta, cifra principal, variación, percentil, fuente y explicación (ES/EN)
+const CARDS = {
+  tga:{g:"c-liq",lb:["Saldo del Tesoro en la Fed (TGA)","Treasury cash at the Fed (TGA)"],v:f=>[f.value,1],u:["mil millones $","$ billion"],ch:f=>f.change_5d!=null&&[f.change_5d,1,["en 5 días","in 5 days"]],p:"percentile_120d",pl:["120 días","120 days"],src:"Daily Treasury Statement",url:"https://fiscaldata.treasury.gov/datasets/daily-treasury-statement/",m:["Si sube, el Tesoro retira liquidez del sistema; si baja, la inyecta.","When it rises, the Treasury drains liquidity from the system; when it falls, it adds it."]},
+  rrp:{g:"c-liq",lb:["Repos inversos de la Fed (dinero aparcado)","Fed reverse repos (parked money)"],v:f=>[f.value,1],u:["mil millones $","$ billion"],ch:f=>f.change_5d!=null&&[f.change_5d,1,["en 5 días","in 5 days"]],src:["Fed de Nueva York","New York Fed"],url:"https://www.newyorkfed.org/markets/desk-operations/reverse-repo",m:["Dinero de fondos monetarios aparcado en la Fed. Si baja, ese dinero vuelve a circular.","Money market fund cash parked at the Fed. When it falls, that money flows back into markets."]},
+  fed_balance:{g:"c-liq",lb:["Balance de la Reserva Federal","Federal Reserve balance sheet"],v:f=>[f.value,3],u:["billones $","$ trillion"],ch:f=>f.change_1w!=null&&[f.change_1w,1,["mil millones en la semana","billion on the week"]],src:"FRED (WALCL)",url:"https://fred.stlouisfed.org/series/WALCL",m:["Si el balance encoge, sale liquidez del sistema.","When the balance sheet shrinks, liquidity leaves the system."]},
+  net_liquidity:{g:"c-liq",lb:["Liquidez neta en EE. UU.","US net liquidity"],v:f=>[f.value,3],u:["billones $","$ trillion"],ch:f=>f.change_1w!=null&&[f.change_1w,1,["mil millones en la semana","billion on the week"]],p:"percentile_60w",pl:["60 semanas","60 weeks"],src:["Cálculo propio (Fed, Tesoro, NY Fed)","Own calculation (Fed, Treasury, NY Fed)"],url:"https://fred.stlouisfed.org/series/WALCL",m:["Balance de la Fed menos la cuenta del Tesoro y los repos inversos. Muy seguido por fondos macro.","Fed balance sheet minus Treasury cash and reverse repos. Closely watched by macro funds."]},
+  cftc_lev:{g:"c-pos",lb:["Fondos apalancados · futuros BTC CME (neto)","Leveraged funds · CME BTC futures (net)"],v:f=>[f.value,0],u:["contratos","contracts"],ch:f=>[f.change_1w,0,["en la semana","on the week"]],p:"percentile_26w",pl:["26 semanas","26 weeks"],src:"CFTC · Traders in Financial Futures",url:"https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",m:["Suelen ser fondos que arbitran la base: un neto corto no es necesariamente una apuesta bajista.","Usually basis-trading funds: a net short is not necessarily a bearish bet."]},
+  cftc_am:{g:"c-pos",lb:["Gestoras de activos · futuros BTC CME (neto)","Asset managers · CME BTC futures (net)"],v:f=>[f.value,0],u:["contratos","contracts"],ch:f=>[f.change_1w,0,["en la semana","on the week"]],p:"percentile_26w",pl:["26 semanas","26 weeks"],src:"CFTC · Traders in Financial Futures",url:"https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",m:["Posición de gestoras tradicionales en futuros de bitcoin.","Traditional asset managers' position in bitcoin futures."]},
+  funding:{g:"c-pos",lb:["Financiación de perpetuos BTC (OKX)","BTC perpetual funding (OKX)"],v:f=>[f.annualized_pct,1,"%"],u:["anualizado","annualised"],ch:f=>f.z!=null&&[null,null,null,"z "+f.z],p:"percentile_33d",pl:["33 días","33 days"],src:["OKX API pública","OKX public API"],url:"https://www.okx.com/trade-swap/btc-usdt-swap",m:["Positiva: los largos pagan a los cortos. Negativa: domina el corto.","Positive: longs pay shorts. Negative: shorts dominate."]},
+  open_interest:{g:"c-pos",lb:["Interés abierto en futuros BTC (OKX)","BTC futures open interest (OKX)"],v:f=>[f.value,2],u:["mil millones $","$ billion"],ch:f=>[f.change_1d_pct,2,["% en el día","% on the day"]],p:"percentile_hist",pl:["histórico","history"],src:"OKX Rubik",url:"https://www.okx.com/markets/data",m:["Si baja de golpe, hay cierres de posiciones, a menudo forzados.","A sudden drop means positions being closed, often forced."]},
+  dvol:{g:"c-sen",lb:["Volatilidad implícita BTC 30 días (DVOL)","BTC 30-day implied volatility (DVOL)"],v:f=>[f.value,1,"%"],u:["anual","annual"],ch:f=>[f.change_1d,1,["en el día","on the day"]],p:"percentile_1y",pl:["1 año","1 year"],src:"Deribit",url:"https://www.deribit.com/statistics/BTC/volatility-index",m:f=>[`Lo que pagan las opciones por protegerse. Equivale a un movimiento diario típico de ${n(f.move_1d_pct,2,"es")} %.`,`What options pay for protection. Equivalent to a typical daily move of ${n(f.move_1d_pct,2,"en")}%.`]},
+  coinbase_premium:{g:"c-sen",lb:["Prima de Coinbase frente a Binance","Coinbase premium versus Binance"],v:f=>[f.value,3,"%"],u:["",""],ch:f=>[null,null,null,null,f],src:"Coinbase + Binance",url:"https://www.coinbase.com/price/bitcoin",m:["Positiva: compra estadounidense más fuerte. Negativa: más venta en EE. UU. Incluye la diferencia entre dólar y USDT.","Positive: stronger US buying. Negative: more selling in the US. Includes the gap between the dollar and USDT."]},
+  stablecoins:{g:"c-sen",lb:["Oferta total de stablecoins en dólares","Total dollar stablecoin supply"],v:f=>[f.value,1],u:["mil millones $","$ billion"],ch:f=>[f.change_7d,2,["en 7 días","in 7 days"]],src:"DefiLlama",url:"https://defillama.com/stablecoins",m:["Dinero que entra al ecosistema cripto (se emite) o sale (se quema).","Money entering the crypto ecosystem (minted) or leaving it (burned)."]},
+  btc_fees:{g:"c-sen",lb:["Comisión de la red Bitcoin (siguiente bloque)","Bitcoin network fee (next block)"],v:f=>[f.value,0],u:["sat/vB","sat/vB"],src:"mempool.space",url:"https://mempool.space",m:["Comisiones altas = mucha actividad en cadena.","High fees = heavy on-chain activity."]},
+  polymarket:{g:"c-sen",lb:["Mercados de predicción (Polymarket)","Prediction markets (Polymarket)"],list:true,src:"Polymarket",url:"https://polymarket.com",m:["Probabilidades con dinero detrás. No son previsiones de ATLAS.","Odds with money behind them. Not ATLAS forecasts."]}
+};
+const ERRMAP = {fed_balance:["fed_balance","net_liquidity"], polymarket:["polymarket"], tga:["tga","net_liquidity"], rrp:["rrp","net_liquidity"], cftc:["cftc_lev","cftc_am"], funding:["funding"], open_interest:["open_interest"], dvol:["dvol"], coinbase_premium:["coinbase_premium"], stablecoins:["stablecoins"], mempool:["btc_fees"]};
+let LANG = "es", P = null, D = null;
+const n = (x, d, l = LANG) => x == null ? "—" : Number(x).toLocaleString(T[l].locale, {minimumFractionDigits:d, maximumFractionDigits:d});
+const sgn = x => (x > 0 ? "+" : x < 0 ? "−" : "") ;
+const nn = (x, d) => sgn(x) + n(Math.abs(x), d);
+const pick = (v, i = LANG === "es" ? 0 : 1) => Array.isArray(v) ? v[i] : v;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const md = s => esc(s).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/\*(.+?)\*/g, "<em>$1</em>");
+const fdate = (s, l = LANG) => { if (!s) return "—"; const [d, t] = s.split(" "); const dt = new Date(d + "T12:00:00Z");
+  const txt = dt.toLocaleDateString(T[l].locale, {day:"numeric", month:"short"}); return t ? txt + " " + t : txt; };
+const fact = id => D.facts.find(f => f.id === id);
+
+function cardHTML(id){
+  const c = CARDS[id], f = fact(id), lb = pick(c.lb), src = pick(c.src), t = T[LANG];
+  const foot = `<div class="src"><a href="${c.url}" target="_blank" rel="noopener">${esc(src)}</a><span>${f ? fdate(f.asof) : "—"}</span></div>`;
+  if (!f) return `<article class="card na"><div class="lb">${esc(lb)}</div><div class="v" style="font-size:18px;color:var(--mute)">${t.na}</div><details class="more"><summary>${t.what}</summary><p>${esc(pick(c.m))}</p></details>${foot}</article>`;
+  if (c.list) return `<article class="card"><div class="lb">${esc(lb)}</div>${(f.value||[]).slice(0,4).map(x=>`<div class="ch neu" style="color:var(--fg)">${esc(x.market)} · <b>${esc(x.odds)}</b></div>`).join("")}<details class="more"><summary>${t.what}</summary><p>${esc(pick(c.m))}</p></details>${foot}</article>`;
+  const [val, dec, suf] = c.v(f); let ch = "", cls = "neu";
+  const cc = c.ch && c.ch(f);
+  if (cc) { if (cc[4]) { ch = `${n(cc[4].coinbase,2)} / ${n(cc[4].binance,2)}`; cls = val < 0 ? "neg" : "pos"; }
+    else if (cc[3]) { ch = cc[3].replace("-", "−").replace(".", LANG === "es" ? "," : "."); cls = "neg"; }
+    else { ch = `${nn(cc[0], cc[1])}${pick(cc[2]).startsWith("%") ? "" : " "}${pick(cc[2])}`; cls = cc[0] < 0 ? "neg" : cc[0] > 0 ? "pos" : "neu"; } }
+  const pv = c.p && f[c.p] != null ? f[c.p] : null;
+  const pct = pv == null ? "" : `<div class="pct"><div class="bar"><i style="left:calc(${pv}% - 1.5px)"></i></div><div class="pl"><span>${t.min}</span><span>${t.pct} ${n(pv,1)} · ${pick(c.pl)}</span><span>${t.max}</span></div></div>`;
+  const flag = D.unusual.some(u => u.id === id);
+  const valTxt = (val < 0 ? "−" : "") + n(Math.abs(val), dec) + (suf ? (LANG === "es" ? " " : "") + suf : "");
+  const m = typeof c.m === "function" ? pick(c.m(f)) : pick(c.m);
+  return `<article class="card${flag?" flag":""}"><div class="lb">${esc(lb)}</div><div class="v">${valTxt}<small>${pick(c.u)}</small></div>${ch?`<div class="ch ${cls}">${ch}</div>`:""}${pct}
+    <details class="more"><summary>${t.what}</summary><p>${esc(m)}</p></details>${foot}</article>`;
+}
+
+function keyHTML(k, i){
+  const f = fact(k.fact), u = D.unusual.find(x => x.id === k.fact), t = T[LANG]; let big = "", unit = "", tag = "";
+  if (f) { const c = CARDS[k.fact]; const cc = c && c.ch && c.ch(f);
+    if (k.fact === "funding") { big = nn(f.annualized_pct, 1) + (LANG==="es"?" %":"%"); unit = pick(c.u); }
+    else if (cc && cc[0] != null) { big = nn(cc[0], cc[1]) + (pick(cc[2]).startsWith("%") ? (LANG==="es"?" %":"%") : ""); unit = pick(cc[2]).replace(/^%\s*/, ""); if (!pick(cc[2]).startsWith("%")) unit = pick(c.u) + " " + unit; }
+    else { const [v, d, s] = c.v(f); big = nn(v, d) + (s || ""); unit = pick(c.u); } }
+  if (u) tag = u.z != null ? `${t.unusualZ} ${nn(u.z,2)}` : t.pctTag(n(u.percentile,0));
+  return `<article class="key"><span class="n">0${i+1}</span>${tag?`<span class="tag neg">${tag}</span>`:""}<h3>${esc(k.title)}</h3>${big?`<div class="big">${big} <small>${esc(unit)}</small></div>`:""}<p>${esc(k.text)}</p></article>`;
+}
+
+function render(){
+  const t = T[LANG], L = P[LANG];
+  document.documentElement.lang = LANG;
+  document.querySelectorAll("[data-t]").forEach(e => e.textContent = t[e.dataset.t]);
+  document.getElementById("bES").setAttribute("aria-pressed", LANG === "es"); document.getElementById("bEN").setAttribute("aria-pressed", LANG === "en");
+  const longDate = new Date(P.date + "T12:00:00Z").toLocaleDateString(t.locale, {weekday:"long", day:"numeric", month:"long", year:"numeric"});
+  document.getElementById("eyebrow").textContent = t.eyebrow(longDate);
+  document.getElementById("headline").innerHTML = md(L.headline);
+  document.title = (LANG === "es" ? "Parte ATLAS · " : "ATLAS Daily Brief · ") + P.date;
+  const px = fact("btc_price"), [ok, tot] = D.sources_ok.split("/");
+  document.getElementById("meta").innerHTML = (px ? `<span>BTC ${LANG==="es" ? n(px.value,0)+" $" : "$"+n(px.value,0)} · ${nn(px.change_1d_pct,1)}${LANG==="es"?" %":"%"} ${LANG==="es"?"en el día":"on the day"} · ${nn(px.change_7d_pct,1)}${LANG==="es"?" %":"%"} ${LANG==="es"?"en 7 días":"in 7 days"}</span>` : "") + `<span>${t.sources(ok, tot)}</span><span>${t.checked}</span>`;
+  document.getElementById("keys").innerHTML = L.keys.map(keyHTML).join("");
+  const r = fact("atlas_rule");
+  if (r) { const [v, of] = r.value.split("/").map(Number);
+    document.getElementById("ruleState").innerHTML = `${r.in_market ? t.in : t.out}: <b>${v} ${LANG==="es"?"de":"of"} ${of}</b> ${t.rulesLong}`;
+    const fam = r.families || {}; const famTxt = LANG === "es" ? `Por familias: medias ${fam.media?.long} de ${fam.media?.total}, momentum ${fam.momentum?.long} de ${fam.momentum?.total} y canales ${fam.canal?.long} de ${fam.canal?.total}. ` : `By family: moving averages ${fam.media?.long} of ${fam.media?.total}, momentum ${fam.momentum?.long} of ${fam.momentum?.total} and channels ${fam.canal?.long} of ${fam.canal?.total}. `;
+    document.getElementById("ruleText").textContent = `(${r.votes_last5.join(", ")}) ` + famTxt + (L.blocks.rule || "");
+    document.getElementById("gfill").style.width = (v / of * 100) + "%"; document.getElementById("gbar").setAttribute("aria-label", `${v}/${of}`);
+    const lvl = r.in_market ? r.exit_level : r.entry_level, dist = r.in_market ? r.exit_distance_pct : r.entry_distance_pct;
+    document.getElementById("lvl").innerHTML = `<div><b>${n(px ? px.value : 0, 0)}</b><span>${t.close} ${fdate(r.asof)}</span></div><div><b>${n(lvl,1)}</b><span>${r.in_market ? t.exitBelow : t.enterAbove}</span></div><div><b>${nn(dist,2)}${LANG==="es"?" %":"%"}</b><span>${t.dist}</span></div>`; }
+  ["liquidity","positioning","sentiment"].forEach(b => document.getElementById("b-" + b).textContent = L.blocks[b] || "");
+  ["c-liq","c-pos","c-sen"].forEach(g => document.getElementById(g).innerHTML = "");
+  const failed = new Set(Object.keys(D.errors || {}).flatMap(k => ERRMAP[k] || [k]));
+  Object.keys(CARDS).forEach(id => { if (fact(id) || failed.has(id)) document.getElementById(CARDS[id].g).insertAdjacentHTML("beforeend", cardHTML(id)); });
+  document.getElementById("watch").innerHTML = L.watch.map(w => `<li>${md(w)}</li>`).join("");
+  document.getElementById("srcs").innerHTML = Object.keys(CARDS).filter(id => fact(id) || failed.has(id)).map(id => { const c = CARDS[id], f = fact(id);
+    return `<tr><td>${esc(pick(c.lb))}</td><td><a href="${c.url}" target="_blank" rel="noopener">${esc(pick(c.src))}</a></td><td class="d">${f ? fdate(f.asof) : t.naShort}</td></tr>`; }).join("")
+    + (r ? `<tr><td>${t.ruleRow}</td><td><a href="https://data-api.binance.vision" target="_blank" rel="noopener">${t.own}</a></td><td class="d">${fdate(r.asof)}</td></tr>` : "");
+}
+
+async function load(day){
+  const base = day ? `archivo/${day}/` : "";
+  try { const [p, d] = await Promise.all([fetch(base + "parte.json", {cache:"no-store"}), fetch(base + "datos.json", {cache:"no-store"})]);
+    if (!p.ok || !d.ok) throw 0; P = await p.json(); D = await d.json(); }
+  catch (e) { P = window.PARTE_EMBED; D = window.DATOS_EMBED; }   // vista previa sin servidor
+  render();
+}
+async function init(){
+  let days = [];
+  try { const r = await fetch("index.json", {cache:"no-store"}); if (r.ok) days = (await r.json()).days || []; } catch (e) {}
+  const q = new URLSearchParams(location.search).get("d");
+  const sel = document.getElementById("day");
+  sel.innerHTML = (days.length ? days : [window.PARTE_EMBED?.date].filter(Boolean)).slice().reverse().map(d => `<option value="${d}">${d}</option>`).join("");
+  if (q) sel.value = q;
+  sel.onchange = () => { const d = sel.value, latest = days[days.length - 1]; history.replaceState(null, "", d === latest ? location.pathname : "?d=" + d); load(d === latest ? null : d); };
+  let l = "en";
+  try { l = localStorage.getItem("atlas-lang") || l; } catch (e) {}
+  if (location.hash === "#en" || location.hash === "#es") l = location.hash.slice(1);
+  LANG = l;
+  function updateLinks(){
+    document.documentElement.lang = LANG;
+    const query = LANG === "es" ? "?lang=es" : "";
+    document.getElementById("evidence-link").href = "../office/evidence.html"+query;
+    const rule = document.getElementById("rule-link");
+    rule.href = "../office/simulation.html"+query;
+    rule.textContent = LANG === "es" ? "Nuestra regla" : "Our rule";
+  }
+  updateLinks();
+  const setLang = x => { LANG = x; updateLinks(); try { localStorage.setItem("atlas-lang", x); } catch (e) {} if (P) render(); };
+  document.getElementById("bES").onclick = () => setLang("es"); document.getElementById("bEN").onclick = () => setLang("en");
+  await load(q && q !== days[days.length - 1] ? q : null);
+}
+init();
+</script>
