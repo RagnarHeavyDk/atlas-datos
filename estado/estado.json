@@ -2,45 +2,51 @@
  "schema": "atlas-estado/1",
  "rule": "atlas-slow-ensemble-v1",
  "symbol": "BTCUSDT",
- "day": "2026-11-24",
- "close": 59832.0,
+ "day": "2026-11-25",
+ "close": 60458.01,
  "votes": 0,
  "rules": 38,
  "exposure": 0.0,
- "vol30": 0.4713,
- "entry_level": 74809.99,
- "exit_level": 72619.28,
- "entry_distance_pct": 25.03,
- "exit_distance_pct": 21.37,
+ "vol30": 0.4754,
+ "entry_level": 75154.29,
+ "exit_level": 72641.85,
+ "entry_distance_pct": 24.31,
+ "exit_distance_pct": 20.15,
  "next_votes": {
   "up": [
    {
     "family": "momentum",
-    "n": 154,
-    "price": 61077.99
+    "n": 140,
+    "price": 63230.0
    },
    {
     "family": "momentum",
     "n": 168,
-    "price": 61510.99
-   },
-   {
-    "family": "momentum",
-    "n": 140,
-    "price": 62290.0
+    "price": 63625.99
    },
    {
     "family": "momentum",
     "n": 112,
-    "price": 64665.23
+    "price": 64323.61
    },
    {
     "family": "momentum",
     "n": 126,
-    "price": 66114.49
+    "price": 65098.97
+   },
+   {
+    "family": "momentum",
+    "n": 238,
+    "price": 66901.99
    }
   ],
-  "down": []
+  "down": [
+   {
+    "family": "momentum",
+    "n": 154,
+    "price": 59794.0
+   }
+  ]
  },
  "families_if_flat": {
   "media": {
@@ -48,7 +54,7 @@
    "total": 16
   },
   "momentum": {
-   "long": 0,
+   "long": 1,
    "total": 13
   },
   "canal": {
@@ -56,11 +62,11 @@
    "total": 9
   }
  },
- "summary_es": "La regla está fuera con 0/38 votos. Volvería a entrar con un cierre diario por encima de 74.810 $ (+25.0 %), con una exposición de 50 %.",
+ "summary_es": "La regla está fuera con 0/38 votos. Volvería a entrar con un cierre diario por encima de 75.154 $ (+24.3 %), con una exposición de 50 %.",
  "portfolio": {
   "equity_at_close": 950.09,
   "return_pct": -4.99,
-  "hold_return_pct": -19.81,
+  "hold_return_pct": -18.97,
   "start": "2026-11-12",
   "basis": "close"
  },
@@ -68,14 +74,14 @@
   "fee_per_side": 0.002,
   "equity_at_close": 1000.0,
   "return_pct": 0.0,
-  "hold_return_pct": -7.97,
+  "hold_return_pct": -7.01,
   "start": "2026-11-17",
   "basis": "close"
  },
  "mia": {
   "verdict": "OK",
-  "day": "2026-11-24"
+  "day": "2026-11-25"
  },
- "published_utc": "2026-11-25T00:25:52Z",
+ "published_utc": "2026-11-26T00:29:14Z",
  "simulation_only": true
 }
