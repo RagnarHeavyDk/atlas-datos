@@ -492,6 +492,61 @@
    "logged_utc": "2026-11-25T00:25:52Z",
    "prev": "e542cb81f295d4f8161db2219104ad3f1340716b548f004490314e436f418a7f",
    "hash": "f5fb3cdba292ef68bc09b1c352b7d3d51d470d07d11a6bae25a97c2b886ada25"
+  },
+  {
+   "schema": "atlas-registro/1",
+   "rule_id": "atlas-slow-ensemble-v1",
+   "symbol": "BTCUSDT",
+   "day": "2026-11-25",
+   "exec_day": "2026-11-26",
+   "rule": {
+    "votes": 0,
+    "rules": 38,
+    "families_if_flat": {
+     "media": {
+      "long": 0,
+      "total": 16
+     },
+     "momentum": {
+      "long": 1,
+      "total": 13
+     },
+     "canal": {
+      "long": 0,
+      "total": 9
+     }
+    },
+    "close": 60458.01,
+    "vol30": 0.4754,
+    "exposure": 0,
+    "entry_level": 75154.29,
+    "exit_level": 72641.85
+   },
+   "portfolio": {
+    "equity_at_close": 950.09,
+    "return_pct": -4.99,
+    "hold_return_pct": -18.97,
+    "start": "2026-11-12",
+    "basis": "close"
+   },
+   "portfolio_alt": {
+    "fee_per_side": 0.002,
+    "equity_at_close": 1000,
+    "return_pct": 0,
+    "hold_return_pct": -7.01,
+    "start": "2026-11-17",
+    "basis": "close"
+   },
+   "mia": {
+    "verdict": "OK",
+    "code_verdict": "OK",
+    "day": "2026-11-25"
+   },
+   "tv": null,
+   "match": true,
+   "logged_utc": "2026-11-26T00:29:14Z",
+   "prev": "f5fb3cdba292ef68bc09b1c352b7d3d51d470d07d11a6bae25a97c2b886ada25",
+   "hash": "062ccf993d621b76e5cba92734259287c03bef63073ebf5aa9d8b3685197c298"
   }
  ]
 }
