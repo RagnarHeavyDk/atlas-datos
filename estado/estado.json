@@ -2,49 +2,49 @@
  "schema": "atlas-estado/1",
  "rule": "atlas-slow-ensemble-v1",
  "symbol": "BTCUSDT",
- "day": "2026-11-25",
- "close": 60458.01,
- "votes": 0,
+ "day": "2026-11-26",
+ "close": 60577.18,
+ "votes": 1,
  "rules": 38,
  "exposure": 0.0,
- "vol30": 0.4754,
- "entry_level": 75154.29,
- "exit_level": 72641.85,
- "entry_distance_pct": 24.31,
- "exit_distance_pct": 20.15,
+ "vol30": 0.4724,
+ "entry_level": 76392.12,
+ "exit_level": 72569.89,
+ "entry_distance_pct": 26.11,
+ "exit_distance_pct": 19.8,
  "next_votes": {
   "up": [
    {
     "family": "momentum",
-    "n": 140,
-    "price": 63230.0
-   },
-   {
-    "family": "momentum",
     "n": 168,
-    "price": 63625.99
-   },
-   {
-    "family": "momentum",
-    "n": 112,
-    "price": 64323.61
+    "price": 63580.01
    },
    {
     "family": "momentum",
     "n": 126,
-    "price": 65098.97
+    "price": 64139.99
+   },
+   {
+    "family": "momentum",
+    "n": 140,
+    "price": 64161.72
+   },
+   {
+    "family": "momentum",
+    "n": 112,
+    "price": 64923.19
    },
    {
     "family": "momentum",
     "n": 238,
-    "price": 66901.99
+    "price": 66964.3
    }
   ],
   "down": [
    {
     "family": "momentum",
     "n": 154,
-    "price": 59794.0
+    "price": 60097.27
    }
   ]
  },
@@ -62,11 +62,11 @@
    "total": 9
   }
  },
- "summary_es": "La regla está fuera con 0/38 votos. Volvería a entrar con un cierre diario por encima de 75.154 $ (+24.3 %), con una exposición de 50 %.",
+ "summary_es": "La regla está fuera con 1/38 votos. Volvería a entrar con un cierre diario por encima de 76.392 $ (+26.1 %), con una exposición de 50 %.",
  "portfolio": {
   "equity_at_close": 950.09,
   "return_pct": -4.99,
-  "hold_return_pct": -18.97,
+  "hold_return_pct": -18.81,
   "start": "2026-11-12",
   "basis": "close"
  },
@@ -74,14 +74,14 @@
   "fee_per_side": 0.002,
   "equity_at_close": 1000.0,
   "return_pct": 0.0,
-  "hold_return_pct": -7.01,
+  "hold_return_pct": -6.82,
   "start": "2026-11-17",
   "basis": "close"
  },
  "mia": {
   "verdict": "OK",
-  "day": "2026-11-25"
+  "day": "2026-11-26"
  },
- "published_utc": "2026-11-26T00:29:14Z",
+ "published_utc": "2026-11-27T00:32:41Z",
  "simulation_only": true
 }
